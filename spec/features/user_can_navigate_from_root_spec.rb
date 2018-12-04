@@ -1,3 +1,5 @@
+require "rails_helper.rb"
+
 describe 'Root page navigation' do
   context 'as a user' do
     it 'should have a nav with working links' do
@@ -5,7 +7,7 @@ describe 'Root page navigation' do
 
       within "#homepage" do
         expect(page).to have_content("BookClub")
-      end
+      end 
 
       within "#books" do
         expect(page).to have_content("All books")
