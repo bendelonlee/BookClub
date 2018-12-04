@@ -11,7 +11,7 @@ describe 'user sees the show page of one book' do
     visit book_path(book_1.id)
 
     expect(page).to have_content(book_1.title)
-    expect(page).to have_content(book_1.authors.first.name)
+    expect(page).to have_content(author_1.name)
     expect(page).to have_content(book_1.page_count)
 
     expect(page).to have_content(user_1.name)
