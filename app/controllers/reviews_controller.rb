@@ -6,14 +6,8 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    temp_review_params = review_params
-    unless temp_review_params[:user].empty?
-      user_id = User.find_by(name: temp_review_params[:user].titleize).id
-    end
-    temp_review_params.delete(:user)
-    temp_review_params[:user_id] = user_id
     @book = Book.find(params[:book_id])
-    @review = @book.reviews.new(temp_review_params)
+    @review = @book.reviews.new(review_params)
     if @review.save
       redirect_to book_path(@book)
     else
@@ -25,7 +19,13 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:title, :rating, :text, :user)
+    temp_params = params.require(:review).permit(:title, :rating, :text, :user)
+    unless temp_params[:user].empty?
+      user_id = User.find_by(name: temp_params[:user].titleize).id
+    end
+    temp_params.delete(:user)
+    temp_params[:user_id] = user_id
+    temp_params
   end
 
 end
