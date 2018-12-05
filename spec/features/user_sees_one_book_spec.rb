@@ -14,6 +14,7 @@ describe 'user sees the show page of one book' do
 
     expect(page).to have_content(book_1.title)
     expect(page).to have_content(author_1.name)
+    expect(page).to have_content(author_2.name)
     expect(page).to have_content(book_1.page_count)
 
     expect(page).to have_content(user_1.name)

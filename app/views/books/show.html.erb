@@ -1,5 +1,13 @@
 <h1><%= @book.title %></h1>
-<h3>Author: <%= @book.authors.first.name %></h3>
+<% if @authors.size == 1 %>
+  <h3>Author:</h3>
+  <h2><%= @authors.first.name %></h2>
+<% else %>
+  <h3>Authors:</h3>
+  <%= @authors.each do |author| %>
+    <h2><%= author.name %></h2>
+  <% end %>
+<% end %>
 <p>page count: <%= @book.page_count %></p>
 <p></p>
 <h2>Reviews:</h2>
