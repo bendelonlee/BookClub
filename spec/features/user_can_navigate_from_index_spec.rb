@@ -13,7 +13,7 @@ describe 'Book index page navigation' do
   context 'as a user' do
     it 'should route to book show page' do
       visit books_path
-
+      
       click_link "book-title-#{@book_1.id}"
 
       expect(current_path).to eq(book_path(@book_1.id))
@@ -22,7 +22,7 @@ describe 'Book index page navigation' do
     it 'should route to author show page' do
       visit authors_path
 
-      click_link "author-#{@author_1}"
+      click_link "author-#{@author_1.id}"
 
       expect(current_path).to eq(author_path(@author_1.id))
     end
