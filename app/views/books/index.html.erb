@@ -12,6 +12,9 @@
 
     <% @books.each do |b| %>
       <a id='book-title-<%= b.id %>' href="/books/<%= b.id %>"><%= b.title %></a>
+      <p><%= b.authors.count > 1 ? "Authors: " : "Author: " %><%= b.authors.map(&:name).join(" ") %></p>
+      <p><%= b.page_count %></p>
+      <p><%= b.publish_year %></p>
     <% end %>
   </body>
 </html>
