@@ -1,0 +1,17 @@
+<h1>Add a book to our database</h1>
+
+<%=  form_for(@book) do |f| %>
+  <%= f.label :"author(s)"%>
+  <%= f.text_field :authors%>
+
+  <%= f.label :book_title%>
+  <%= f.text_field :title%>
+
+  <%= f.label :page_count%>
+  <%= f.text_field :page_count%>
+
+  <%= f.submit %>
+<% end %>
+
+
+<%= form_tag() %>

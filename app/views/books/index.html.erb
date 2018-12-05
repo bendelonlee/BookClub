@@ -9,6 +9,7 @@
       <a id='homepage' href="/">BookClub</a>
       <a id='books' href="/books">All books</a>
     </nav>
+    <%= link_to "Add a book", new_book_path %>
 
     <% @books.each do |b| %>
       <a id='book-title-<%= b.id %>' href="/books/<%= b.id %>"><%= b.title %></a>
@@ -19,4 +20,5 @@
       <p><%= b.publish_year %></p>
     <% end %>
   </body>
+
 </html>

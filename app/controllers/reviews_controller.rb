@@ -14,7 +14,7 @@ class ReviewsController < ApplicationController
       render :new
     end
   end
-
+ 
 
   private
 
