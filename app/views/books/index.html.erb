@@ -9,5 +9,9 @@
       <a id='homepage' href="/">BookClub</a>
       <a id='books' href="/books">All books</a>
     </nav>
+
+    <% @books.each do |b| %>
+      <a id='book-title-<%= b.id %>' href="/books/<%= b.id %>"><%= b.title %></a>
+    <% end %>
   </body>
 </html>

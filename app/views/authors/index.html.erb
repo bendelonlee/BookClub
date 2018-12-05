@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>BookClub | Authors</title>
+  </head>
+  <body>
+    <%= @authors.each do |a| %>
+      <a id="author-<%= a.id %>" href="/authors/<%= a.id %>"><%= a.name %></a>
+    <% end %>
+  </body>
+</html>
