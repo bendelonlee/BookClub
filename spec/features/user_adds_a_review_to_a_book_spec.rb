@@ -4,7 +4,7 @@ describe 'user_adds_a_review_to_a_book' do
     it 'links them to a page where they can create a book' do
       user_1 = User.create!(name: "Bob Jr.")
       author_1 = Author.create!(name: "Boy, Johnny")
-      book_1 = author_1.books.create!(page_count: 123, title: "Yes, You Will Do It")
+      book_1 = author_1.books.create!(page_count: 123, title: "Yes, You Will Do It", publish_year: 2012)
 
       visit book_path(book_1.id)
 
