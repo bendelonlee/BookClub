@@ -5,7 +5,8 @@
 <h2>Reviews:</h2>
 <% @reviews.each do |review| %>
   <p>Title: <%= review.title %></p>
-  <p>Rating: <%= review.rating %></p>
   <p>User: <%=review.user.name%></p>
+  <p>Rating: <%= review.rating %></p>
   <p><%= review.text %></p>
 <% end %>
+<%= link_to 'Add a Review', new_book_review_path(@book.id) %> |
