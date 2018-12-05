@@ -1,6 +1,12 @@
-<h1>Write Your Review for <%= @book.title %></h1>
+<h2>Write Your Review for: </h2>
+<h1><%= @book.title %></h1>
 
 <%= form_for([@book, @review]) do |f| %>
+  <ul>
+  <% @review.errors.full_messages.each do |error| %>
+    <li><%= error %></li>
+  <% end %>
+  </ul>
   <p>
     <%= f.label :review_title %><br>
     <%= f.text_field :title %>
