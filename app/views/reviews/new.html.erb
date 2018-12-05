@@ -1,0 +1,28 @@
+<h1>Write Your Review for <%= @book.title %></h1>
+
+<%= form_for([@book, @review]) do |f| %>
+  <p>
+    <%= f.label :review_title %><br>
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :your_username %><br>
+    <%= f.text_field :user %>
+  </p>
+  <p>
+    <%= f.label :rating %><br>
+    <%= radio_button('review', 'rating', '1' ) %>
+    <%= radio_button('review', 'rating', '2' ) %>
+    <%= radio_button('review', 'rating', '3' ) %>
+    <%= radio_button('review', 'rating', '4' ) %>
+    <%= radio_button('review', 'rating', '5' ) %>
+  </p>
+  <p>
+    <%= f.label :your_review %><br>
+    <%= f.text_field :text %>
+  </p>
+
+  <p>
+    <%= f.submit "Submit Review" %>
+  </p>
+<% end %>
