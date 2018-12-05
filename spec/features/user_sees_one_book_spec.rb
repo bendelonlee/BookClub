@@ -1,8 +1,10 @@
 require "rails_helper"
 describe 'user sees the show page of one book' do
   it 'displays the books information and reviews' do
-    author_1 = Author.create!(name: "Hemingway, Ernest")
+    author_1 = Author.create!(name: "Ernest Hemmingway")
+    author_2 = Author.create!(name: "Spot")
     book_1 = author_1.books.create!(title: "Long Day", page_count: 375)
+    BookAuthor.create!(author_id: author_2.id, book_id: book_1.id)
     user_1 = User.create!(name: "Bob")
     user_2 = User.create!(name: "Barb")
     review_1 = book_1.reviews.create!(title: "Wow.", rating: 5, user_id: user_1.id, text: "This book flew by! It was amazing!")

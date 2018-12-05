@@ -61,7 +61,6 @@ describe 'user_adds_a_review_to_a_book' do
       fill_in "review[user]", with: "bob jr."
       fill_in "review[text]", with: @review_text
       click_on "Submit Review"
-      save_and_open_page
       expect(page).to have_content("Rating is a required field")
     end
 
