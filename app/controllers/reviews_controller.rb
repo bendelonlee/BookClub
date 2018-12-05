@@ -6,19 +6,26 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    book = Book.find(params["book_id"])
-    @user = User.find_by(name: params[:review][:user].titleize)
-    @review = Review.create!(
-      {
-        title:  params[:review][:title],
-        rating: params[:review][:rating],
-        text:   params[:review][:text],
+    temp_review_params = review_params
+    unless temp_review_params[:user].empty?
+      user_id = User.find_by(name: temp_review_params[:user].titleize).id
+    end
+    temp_review_params.delete(:user)
+    temp_review_params[:user_id] = user_id
+    @book = Book.find(params[:book_id])
+    @review = @book.reviews.new(temp_review_params)
+    if @review.save
+      redirect_to book_path(@book)
+    else
+      render :new
+    end
+  end
 
-        user_id: @user.id,
-        book_id: book.id
-      }
-    )
-    redirect_to book_path(book.id)
+
+  private
+
+  def review_params
+    params.require(:review).permit(:title, :rating, :text, :user)
   end
 
 end

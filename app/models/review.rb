@@ -1,7 +1,8 @@
 class Review < ApplicationRecord
-  validates_presence_of :title
-  validates_presence_of :rating
-  validates_presence_of :text
+  validates_presence_of :title, :text
+
+  validates :rating, presence: {message: "is a required field"}
+
 
   belongs_to :user
   belongs_to :book
