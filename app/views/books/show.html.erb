@@ -17,4 +17,6 @@
   <p>Rating: <%= review.rating %></p>
   <p><%= review.text %></p>
 <% end %>
+<%= button_to "Delete Book",  book_path(@book), method: :delete, data: {confirm: "Are you sure?"}  %>
+
 <%= link_to 'Add a Review', new_book_review_path(@book.id) %> |
