@@ -116,7 +116,7 @@ describe 'Books index page' do
       expect(page).to have_content("Average Rating: #{bottom_three[2].reviews.average(:rating)}")
     end
 
-    xit 'should show statistics about the three users with most reviews' do
+    it 'should show statistics about the three users with most reviews' do
       user_1 = User.create!(name: Faker::Name.name)
       user_2 = User.create!(name: Faker::Name.name)
       user_3 = User.create!(name: Faker::Name.name)
@@ -142,16 +142,16 @@ describe 'Books index page' do
 
       visit books_path
 
-      expect(page).to have_content(user_1.name)
+      expect(page).to have_content("User: #{user_1.name}")
       expect(page).to have_content("Review Count: #{user_1.reviews.count}")
 
-      expect(page).to have_content(user_2.name)
+      expect(page).to have_content("User: #{user_2.name}")
       expect(page).to have_content("Review Count: #{user_2.reviews.count}")
 
-      expect(page).to have_content(user_3.name)
+      expect(page).to have_content("User: #{user_3.name}")
       expect(page).to have_content("Review Count: #{user_3.reviews.count}")
 
-      expect(page).to_not have_content(user_4.name)
+      expect(page).to_not have_content("User: #{user_4.name}")
       expect(page).to_not have_content("Review Count: #{user_4.reviews.count}")
     end
   end
