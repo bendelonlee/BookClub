@@ -11,4 +11,13 @@ class Book < ApplicationRecord
   def titleize_title
     self.title = title.titleize if title
   end
+
+  def self.rated_books(top_or_bottom, number)
+    order = top_or_bottom == :top ? "DESC" : "ASC"
+    joins(:reviews)
+      .group(:book_id, "books.title")
+      .order("AVG(reviews.rating) #{order}")
+      .limit(number)
+      .pluck("books.title", "AVG(reviews.rating)")
+  end
 end
