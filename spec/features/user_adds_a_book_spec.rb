@@ -27,12 +27,12 @@ RSpec.describe 'User adds a book' do
       expect(page).to have_content(@page_count)
     end
 
-    # it 'returns an error if no author is given' do
-    #   fill_in "book[title]", with: @book_title
-    #   fill_in "book[page_count]", with: @page_count
-    #   click_button "Create Book"
-    #   expect(page).to have_content("Author can't be blank")
-    # end
+    it 'returns an error if no author is given' do
+      fill_in "book[title]", with: @book_title
+      fill_in "book[page_count]", with: @page_count
+      click_button "Create Book"
+      expect(page).to have_content("Author can't be blank")
+    end
 
     it 'returns an error if no title is given' do
       fill_in "book[page_count]", with: @page_count
