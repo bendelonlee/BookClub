@@ -20,4 +20,8 @@ class Book < ApplicationRecord
       .limit(number)
       .pluck("books.title", "AVG(reviews.rating)")
   end
+
+  def reviews(order, number_of_r)
+    reviews.order("rating #{order.to_s}")
+  end
 end
