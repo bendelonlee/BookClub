@@ -1,5 +1,12 @@
 <h1>Add a book to our database</h1>
 
+<ul>
+<% @book.errors.full_messages.each do |error| %>
+  
+  <li><%= error %></li>
+<% end %>
+</ul>
+
 <%=  form_for(@book) do |f| %>
   <%= f.label :"author(s)"%>
   <%= f.text_field :authors%>

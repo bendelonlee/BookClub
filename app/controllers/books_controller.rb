@@ -14,11 +14,15 @@ class BooksController < ApplicationController
   end
 
   def create
-    book = Book.create!(book_params)
-    create_authors.each do |author|
-      BookAuthor.create!(author_id: author.id, book_id: book.id)
+    @book = Book.new(book_params)
+    if @book.save
+      create_authors.each do |author|
+        BookAuthor.create!(author_id: author.id, book_id: @book.id)
+      end
+      redirect_to book_path(@book)
+    else
+      render :new
     end
-    redirect_to book_path(book)
   end
 
   private
