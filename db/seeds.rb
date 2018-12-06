@@ -12,7 +12,6 @@ require "./app/models/book_author"
 require "./app/models/review"
 require "./app/models/user"
 
-# User.joins(:reviews).select("COUNT(user_id)").group(:user_id, :name).order("COUNT(user_id) DESC").limit(3).pluck(:name, "COUNT(user_id)")
 
 # author_1 = Author.create!(name: "Ernest Hemmingway")
 # author_2 = Author.create!(name: "Spot")
