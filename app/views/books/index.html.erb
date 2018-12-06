@@ -11,6 +11,28 @@
     </nav>
     <%= link_to "Add a book", new_book_path %>
 
+    <section class='stats'>
+      <h2>Our top and bottom rated books as rated by users</h2>
+      <div class="top_three">
+        <p>Top Three</p>
+        <% @top_three.each do |b| %>
+          <p>Book: <%= b[0] %>, Average Rating: <%= b[1] %></p>
+        <% end %>
+      </div>
+      <div class="bottom_three">
+        <p>Bottom Three</p>
+        <% @bottom_three.each do |b| %>
+          <p>Book: <%= b[0] %>, Average Rating: <%= b[1] %></p>
+        <% end %>
+      </div>
+      <h2>Our top reviewers</h2>
+      <div class="top_reviewers">
+        <% @top_users.each do |u| %>
+          <p>User: <%= u[0] %>, Number of Ratings: <%= u[1] %></p>
+        <% end %>
+      </div>
+    </section>
+
     <% @books.each do |b| %>
       <a id='book-title-<%= b.id %>' href="/books/<%= b.id %>"><%= b.title %></a>
       <p><%= b.authors.count > 1 ? "Authors: " : "Author: " %><%= b.authors.map(&:name).join(" ") %></p>
