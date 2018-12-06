@@ -5,7 +5,7 @@
 <% else %>
   <h3>Authors:</h3>
   <%= @authors.each do |author| %>
-    <h2><%= author.name %></h2>
+    <h2><%= link_to(author.name, author_path(author.id)) %></h2>
   <% end %>
 <% end %>
 <p>page count: <%= @book.page_count %></p>

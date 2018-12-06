@@ -17,7 +17,15 @@ class BooksController < ApplicationController
     @book = Book.new(book_params)
     if @book.save
       create_authors.each do |author|
-        BookAuthor.create!(author_id: author.id, book_id: @book.id)
+        if author.id
+          BookAuthor.create!(author_id: author.id, book_id: @book.id)
+        else
+          existing_author = Author.find_by(name: author.name)
+          if existing_author
+            @book_author = BookAuthor.create!(author_id: existing_author.id, book_id: @book.id)
+          end
+          
+        end
       end
       redirect_to book_path(@book)
     else
@@ -36,7 +44,7 @@ class BooksController < ApplicationController
     author_params = params.require(:book).permit(:authors)
     author_names = author_params[:authors].split(", ")
     author_names.map do |name|
-      Author.create!(name: name.titleize)
+      Author.create(name: name.titleize)
     end
   end
 end
