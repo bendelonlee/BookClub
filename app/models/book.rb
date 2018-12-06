@@ -11,4 +11,8 @@ class Book < ApplicationRecord
   def titleize_title
     self.title = title.titleize if title
   end
+
+  def reviews(order, number_of_r)
+    reviews.order("rating #{order.to_s}")
+  end
 end
