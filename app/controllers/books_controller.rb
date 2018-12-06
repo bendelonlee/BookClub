@@ -28,6 +28,7 @@ class BooksController < ApplicationController
           else
             @book.errors.add(:author, "can't be blank")
             encountered_error = true
+            @book.delete
           end
         end
       end
