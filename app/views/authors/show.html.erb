@@ -5,6 +5,9 @@
     <title>BookClub | <%= @author.name %></title>
   </head>
   <body>
-  
+    <h1><%= @author.name %></h1>
+    <% @books.each do |book| %>
+      <%= link_to(book.title, book_path(book.id)) %>
+    <% end %>
   </body>
 </html>
