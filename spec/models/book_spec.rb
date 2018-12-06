@@ -9,5 +9,11 @@ RSpec.describe Book, type: :model do
     it { should have_many(:authors) }
     it { should have_many(:reviews) }
   end
-
+  describe 'instance methods' do
+    it "titleizes the title" do
+      book_1 = Book.new(title: "hey you", page_count: "134")
+      book_1.titleize_title
+      expect(book_1.title).to eq("Hey You")
+    end
+  end
 end

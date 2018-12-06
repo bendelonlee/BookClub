@@ -25,7 +25,6 @@ class BooksController < ApplicationController
 
   def book_params
     temp_params = params.require(:book).permit(:title, :page_count)
-    temp_params[:title] = temp_params[:title].titleize
     temp_params
   end
 
