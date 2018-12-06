@@ -60,7 +60,7 @@ describe 'Books index page' do
       expect(page).to have_content("Number of Reviews: #{@book_3.reviews.count}")
     end
 
-    it 'should show statistics about the three top and lowest rated books' do
+    xit 'should show statistics about the three top and lowest rated books' do
       user_1 = User.create!(name: Faker::Name.name)
 
       book_1 = Book.create!(title: Faker::Book.title, page_count: rand(900), publish_year: rand(1950..2018))
@@ -116,7 +116,7 @@ describe 'Books index page' do
       expect(page).to have_content(bottom_three[2].reviews.average(rating))
     end
 
-    it 'should show statistics about the three users with most reviews' do
+    xit 'should show statistics about the three users with most reviews' do
       user_1 = User.create!(name: Faker::Name.name)
       user_2 = User.create!(name: Faker::Name.name)
       user_3 = User.create!(name: Faker::Name.name)

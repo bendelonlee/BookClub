@@ -1,13 +1,14 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>BookClub | <%= @author.name %></title>
-  </head>
-  <body>
     <h1><%= @author.name %></h1>
     <% @books.each do |book| %>
+      <div id="book-<%= book.id %>-container">
       <%= link_to(book.title, book_path(book.id)) %>
+      <p>Page Count: <%= book.page_count %></p>
+      <p>Publish Year: <%= book.publish_year %></p>
+      <% if book.authors.size > 1 %>
+        <% additional_authors = book.authors - [@author] %>
+        <% additional_authors.each do |extra_auth|%>
+          <p>Additional Author: <%= link_to(extra_auth.name, author_path(extra_auth)) %></p>
+        <% end %>
+      <% end %>
+      </div>
     <% end %>
-  </body>
-</html>
