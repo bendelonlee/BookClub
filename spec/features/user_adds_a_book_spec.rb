@@ -11,7 +11,6 @@ RSpec.describe 'User adds a book' do
     end
 
     it 'allows them to add a book by filling in a form' do
-
       expect(current_path).to eq(new_book_path)
 
       fill_in "book[title]", with: @book_title
