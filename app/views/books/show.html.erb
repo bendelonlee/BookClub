@@ -13,7 +13,7 @@
 <h2>Reviews:</h2>
 <% @reviews.each do |review| %>
   <p>Title: <%= review.title %></p>
-  <p>User: <%=review.user.name%></p>
+  <p>User: <%=link_to(review.user.name, user_path(review.user))%></p>
   <p>Rating: <%= review.rating %></p>
   <p><%= review.text %></p>
 <% end %>
