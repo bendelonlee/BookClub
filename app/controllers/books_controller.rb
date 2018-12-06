@@ -1,6 +1,8 @@
 class BooksController < ApplicationController
   def index
     @books = Book.all
+    @top_three = Book.rated_books(:top, 3)
+    @bottom_three = Book.rated_books(:bottom, 3)
   end
 
   def show
