@@ -1,14 +1,14 @@
 class Book < ApplicationRecord
   before_save :titleize_title
 
-  validates_presence_of :title
-  validates_presence_of :page_count
+  validates_presence_of :title, :page_count
+  validates_uniqueness_of :title
 
   has_many :reviews
   has_many :book_authors
   has_many :authors, through: :book_authors
 
   def titleize_title
-    self.title = title.titleize
+    self.title = title.titleize if title
   end
 end
