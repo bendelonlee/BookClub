@@ -133,7 +133,7 @@ describe 'Books index page' do
       book_3 = Book.create!(title: Faker::Book.unique.title, page_count: rand(900), publish_year: rand(1950..2018))
         book_3.reviews.create!(title: "#{Faker::App.name} #{Faker::Ancient.god}", rating: 1, user_id: user_1.id, text: Faker::RickAndMorty.quote)
         book_3.reviews.create!(title: "#{Faker::App.name} #{Faker::Ancient.god}", rating: 2, user_id: user_2.id, text: Faker::RickAndMorty.quote)
-        book_4.reviews.create!(title: "#{Faker::App.name} #{Faker::Ancient.god}", rating: 5, user_id: user_3.id, text: Faker::RickAndMorty.quote)
+        book_3.reviews.create!(title: "#{Faker::App.name} #{Faker::Ancient.god}", rating: 5, user_id: user_3.id, text: Faker::RickAndMorty.quote)
 
       book_4 = Book.create!(title: Faker::Book.unique.title, page_count: rand(900), publish_year: rand(1950..2018))
         book_4.reviews.create!(title: "#{Faker::App.name} #{Faker::Ancient.god}", rating: 3, user_id: user_1.id, text: Faker::RickAndMorty.quote)
