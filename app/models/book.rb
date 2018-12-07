@@ -21,7 +21,11 @@ class Book < ApplicationRecord
       .pluck("books.title", "AVG(reviews.rating)")
   end
 
-  def reviews(order, number_of_r)
-    reviews.order("rating #{order.to_s}")
+  def get_reviews(top_or_bottom, number_of)
+    order = top_or_bottom == :top ? "DESC" : "ASC"
+    reviews_with_ids = self.reviews.order("rating #{order}").limit(number_of).pluck(:title, :rating, :user_id)
+    reviews_with_ids.map do |r|
+      r[-1] = User.where("id = #{r[-1]}").pluck(:name)[0]; r
+    end
   end
 end
