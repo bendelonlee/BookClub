@@ -1,18 +1,23 @@
-require "rails_helper"
+!require "rails_helper"
 
-describe 'User navigates to Book Show Page' do
+describe 'User navigates to Author Show Page' do
   before(:each) do
     @book = Book.create!(title: "Romantic Titanic", page_count: 201, publish_year: 2017)
-    @author = @book.authors.create!(name: "Sally Lovehart")
-    visit book_path(@book)
+    @author_1 = @book.authors.create!(name: "Sally Lovehart")
+    @author_2 = @book.authors.create!(name: "Clive Lovehart")
+    visit author_path(@author_1)
   end
-  context 'when they click on a delete button' do
+  context 'when they click on a delete link or button' do
     before(:each) do
-      click_on "Delete Book"
+      click_on "Delete Author"
     end
-    it "no longer displays in the book index" do
+    it "no longer displays the author in the book index" do
       expect(current_path).to eq(books_path)
+      expect(page).to_not have_content(@author_1.name)
       expect(page).to_not have_content(@book.title)
+
+      visit authors_path
+      expect(page).to have_content(@author_2.name)
     end
   end
 end

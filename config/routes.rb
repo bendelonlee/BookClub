@@ -7,5 +7,5 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:show]
-  resources :authors, only: [:index, :show]
+  resources :authors, only: [:index, :show, :destroy]
 end
