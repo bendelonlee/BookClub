@@ -28,4 +28,8 @@ class Book < ApplicationRecord
       r[-1] = User.get_name_for(r[-1]); r
     end
   end
+
+  def review_average
+    reviews.average(:rating)
+  end
 end
