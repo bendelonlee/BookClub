@@ -2,14 +2,14 @@
 
 <ul>
 <% @book.errors.full_messages.each do |error| %>
-  
+
   <li><%= error %></li>
 <% end %>
 </ul>
 
-<%=  form_for(@book) do |f| %>
-  <%= f.label :"author(s)"%>
-  <%= f.text_field :authors%>
+<%= form_for(@book) do |f| %>
+  <%= f.label :authors %>
+  <%= f.text_field :authors, value: ""%>
 
   <%= f.label :book_title%>
   <%= f.text_field :title%>
@@ -19,6 +19,3 @@
 
   <%= f.submit %>
 <% end %>
-
-
-<%= form_tag() %>
