@@ -24,7 +24,7 @@ RSpec.describe Book, type: :model do
       book_1.reviews.create!(title: "So lovely", rating: 5, text: "I love how they fell in love", user_id: user.id)
       book_1.reviews.create!(title: "Too much", rating: 1, text: "This book was too much for me", user_id: user.id)
 
-      expect(book_1.review_average).to eq(3)
+      expect(book_1.average_rating).to eq(3)
     end
   end
 end
