@@ -11,4 +11,6 @@
         <% end %>
       <% end %>
       </div>
+      <p><%= button_to "Delete Author",  author_path(@author), method: :delete, data: {confirm: "Are you sure?"}  %>
+
     <% end %>

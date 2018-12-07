@@ -18,6 +18,7 @@ class BooksController < ApplicationController
 
   def new
     @book = Book.new
+    @author = Author.new
   end
 
   def create
@@ -25,19 +26,21 @@ class BooksController < ApplicationController
     @book = Book.new(book_params)
 
     if @book.save
-      create_authors.each do |author|
+      created_authors = create_authors
+      created_authors.each do |author|
         if author.id
           BookAuthor.create!(author_id: author.id, book_id: @book.id)
         else
           existing_author = Author.find_by(name: author.name)
           if existing_author
             @book_author = BookAuthor.create!(author_id: existing_author.id, book_id: @book.id)
-          else
-            @book.errors.add(:author, "can't be blank")
-            encountered_error = true
-            @book.delete
           end
         end
+      end
+      if created_authors == []
+        @book.errors.add(:author, "can't be blank")
+        encountered_error = true
+        @book.delete
       end
     else
       encountered_error = true
@@ -51,7 +54,6 @@ class BooksController < ApplicationController
 
   def destroy
     @book = Book.find(params[:id])
-    @book.book_authors.each { |b_a| b_a.destroy   }
     @book.destroy
     redirect_to books_path
   end
@@ -65,12 +67,9 @@ class BooksController < ApplicationController
 
   def create_authors
     author_params = params.require(:book).permit(:authors)
-    author_names = author_params[:authors].split(", ")
+    author_names = author_params[:authors]
+    author_names = author_names.split(", ")
     author_names.map do |name|
-
-      #Working solution
-      name = name[0..1] == '#<' ? "" : name
-
       Author.create(name: name.titleize)
     end
   end
