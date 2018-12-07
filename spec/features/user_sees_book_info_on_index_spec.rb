@@ -63,30 +63,30 @@ describe 'Books index page' do
     it 'should show statistics about the three top and lowest rated books' do
       user_1 = User.create!(name: Faker::Name.name)
 
-      book_1 = Book.create!(title: Faker::Book.title, page_count: rand(900), publish_year: rand(1950..2018))
+      book_1 = Book.create!(title: Faker::Book.unique.title, page_count: rand(900), publish_year: rand(1950..2018))
       review_1 = book_1.reviews.create!(title: "#{Faker::App.name} #{Faker::Ancient.god}", rating: 2, user_id: user_1.id, text: Faker::RickAndMorty.quote)
       review_2 = book_1.reviews.create!(title: "#{Faker::App.name} #{Faker::Ancient.god}", rating: 3, user_id: user_1.id, text: Faker::RickAndMorty.quote)
 
-      book_2 = Book.create!(title: Faker::Book.title, page_count: rand(900), publish_year: rand(1950..2018))
+      book_2 = Book.create!(title: Faker::Book.unique.title, page_count: rand(900), publish_year: rand(1950..2018))
       review_3 = book_2.reviews.create!(title: "#{Faker::App.name} #{Faker::Ancient.god}", rating: 5, user_id: user_1.id, text: Faker::RickAndMorty.quote)
       review_4 = book_2.reviews.create!(title: "#{Faker::App.name} #{Faker::Ancient.god}", rating: 5, user_id: user_1.id, text: Faker::RickAndMorty.quote)
 
-      book_3 = Book.create!(title: Faker::Book.title, page_count: rand(900), publish_year: rand(1950..2018))
+      book_3 = Book.create!(title: Faker::Book.unique.title, page_count: rand(900), publish_year: rand(1950..2018))
       review_5 = book_3.reviews.create!(title: "#{Faker::App.name} #{Faker::Ancient.god}", rating: 1, user_id: user_1.id, text: Faker::RickAndMorty.quote)
       review_6 = book_3.reviews.create!(title: "#{Faker::App.name} #{Faker::Ancient.god}", rating: 2, user_id: user_1.id, text: Faker::RickAndMorty.quote)
 
-      book_4 = Book.create!(title: Faker::Book.title, page_count: rand(900), publish_year: rand(1950..2018))
+      book_4 = Book.create!(title: Faker::Book.unique.title, page_count: rand(900), publish_year: rand(1950..2018))
       review_7 = book_4.reviews.create!(title: "#{Faker::App.name} #{Faker::Ancient.god}", rating: 3, user_id: user_1.id, text: Faker::RickAndMorty.quote)
       review_8 = book_4.reviews.create!(title: "#{Faker::App.name} #{Faker::Ancient.god}", rating: 2, user_id: user_1.id, text: Faker::RickAndMorty.quote)
       review_9 = book_4.reviews.create!(title: "#{Faker::App.name} #{Faker::Ancient.god}", rating: 4, user_id: user_1.id, text: Faker::RickAndMorty.quote)
       review_10 = book_4.reviews.create!(title: "#{Faker::App.name} #{Faker::Ancient.god}", rating: 5, user_id: user_1.id, text: Faker::RickAndMorty.quote)
 
-      book_5 = Book.create!(title: Faker::Book.title, page_count: rand(900), publish_year: rand(1950..2018))
+      book_5 = Book.create!(title: Faker::Book.unique.title, page_count: rand(900), publish_year: rand(1950..2018))
       review_11 = book_5.reviews.create!(title: "#{Faker::App.name} #{Faker::Ancient.god}", rating: 1, user_id: user_1.id, text: Faker::RickAndMorty.quote)
       review_12 = book_5.reviews.create!(title: "#{Faker::App.name} #{Faker::Ancient.god}", rating: 2, user_id: user_1.id, text: Faker::RickAndMorty.quote)
       review_13 = book_5.reviews.create!(title: "#{Faker::App.name} #{Faker::Ancient.god}", rating: 3, user_id: user_1.id, text: Faker::RickAndMorty.quote)
 
-      book_6 = Book.create!(title: Faker::Book.title, page_count: rand(900), publish_year: rand(1950..2018))
+      book_6 = Book.create!(title: Faker::Book.unique.title, page_count: rand(900), publish_year: rand(1950..2018))
       review_14 = book_6.reviews.create!(title: "#{Faker::App.name} #{Faker::Ancient.god}", rating: 1, user_id: user_1.id, text: Faker::RickAndMorty.quote)
       review_15 = book_6.reviews.create!(title: "#{Faker::App.name} #{Faker::Ancient.god}", rating: 1, user_id: user_1.id, text: Faker::RickAndMorty.quote)
       review_16 = book_6.reviews.create!(title: "#{Faker::App.name} #{Faker::Ancient.god}", rating: 2, user_id: user_1.id, text: Faker::RickAndMorty.quote)

@@ -1,6 +1,6 @@
 require "rails_helper"
 describe 'user sees the show page of one book' do
-  xit 'displays the books information and reviews' do
+  it 'displays the books information and reviews' do
     author_1 = Author.create!(name: "Ernest Hemmingway")
     author_2 = Author.create!(name: "Spot")
     book_1 = author_1.books.create!(title: "Long Day", page_count: 375, publish_year: 2012)
