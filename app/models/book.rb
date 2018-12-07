@@ -29,7 +29,7 @@ class Book < ApplicationRecord
     end
   end
 
-  def review_average
+  def average_rating
     reviews.average(:rating)
   end
 end
