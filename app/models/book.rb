@@ -5,8 +5,11 @@ class Book < ApplicationRecord
   validates_uniqueness_of :title, case_sensitive: false
 
   has_many :reviews
-  has_many :book_authors
+  has_many :book_authors, :dependent => :destroy
   has_many :authors, through: :book_authors
+
+
+
 
   def titleize_title
     self.title = title.titleize if title
