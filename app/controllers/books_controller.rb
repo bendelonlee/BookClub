@@ -12,6 +12,7 @@ class BooksController < ApplicationController
     @reviews = @book.reviews
     @top_reviews = @book.get_reviews(:top, 3)
     @bottom_reviews = @book.get_reviews(:bottom, 3)
+    @bottom_reviews = @bottom_reviews.select {|rev| !@top_reviews.include?(rev)}
   end
 
   def new
