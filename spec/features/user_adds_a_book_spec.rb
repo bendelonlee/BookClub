@@ -27,7 +27,6 @@ RSpec.describe 'User adds a book' do
     end
 
     it 'returns an error if no author is given' do
-      save_and_open_page
       fill_in "book[title]", with: @book_title
       fill_in "book[page_count]", with: @page_count
       click_button "Create Book"

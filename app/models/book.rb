@@ -21,7 +21,7 @@ class Book < ApplicationRecord
       .pluck("books.title", "AVG(reviews.rating)")
   end
 
-  def reviews(order, number_of_r)
+  def get_reviews(order, number_of_r)
     reviews.order("rating #{order.to_s}")
   end
 end

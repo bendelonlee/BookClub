@@ -65,5 +65,6 @@ describe 'user_adds_a_review_to_a_book' do
       click_on "Submit Review"
       expect(page).to have_content("Rating is a required field")
     end
+    it "adds user if no user exists with name"
   end
 end
