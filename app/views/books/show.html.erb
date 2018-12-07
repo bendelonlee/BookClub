@@ -10,6 +10,29 @@
 <% end %>
 <p>page count: <%= @book.page_count %></p>
 <p>publish_year: <%= @book.publish_year %></p>
+
+<% unless @top_reviews.empty? && @bottom_reviews.empty? %>
+<section class='review-stats'>
+  <h2>Review Statistics</h2>
+    <div class="top-reviews">
+      <% @top_reviews.each do |r| %>
+        <p>User: <%= r[2] %></p>
+        <p>Title: <%= r[0] %></p>
+        <p>Rating: <%= r[1] %></p>
+      <% end %>
+    </div>
+  <% unless @bottom_reviews.empty? %>
+    <div class="bottom-reviews">
+      <% @bottom_reviews.each do |r| %>
+        <p>User: <%= r[2] %></p>
+        <p>Title: <%= r[0] %></p>
+        <p>Rating: <%= r[1] %></p>
+      <% end %>
+    </div>
+  <% end %>
+</section>
+<% end %>
+
 <h2>Reviews:</h2>
 <% @reviews.each do |review| %>
   <p>Title: <%= review.title %></p>

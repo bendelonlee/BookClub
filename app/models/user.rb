@@ -11,4 +11,8 @@ class User < ApplicationRecord
       .limit(num_of_users)
       .pluck(:name, "COUNT(user_id)")
   end
+
+  def self.get_name_for(user_id)
+    where("id = #{user_id}").pluck(:name)[0]
+  end
 end

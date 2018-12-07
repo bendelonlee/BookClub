@@ -47,7 +47,7 @@ describe 'user sees the show page of one book' do
     review_6 = book_1.reviews.create!(title: "#{Faker::App.name} #{Faker::Ancient.god}", rating: 5, user_id: user_6.id, text: Faker::RickAndMorty.quote)
 
     visit book_path(book_1.id)
-
+  
     top_three = book_1.reviews.order("rating DESC").limit(3).pluck(:title, :rating, :user_id)
     bottom_three = book_1.reviews.order(:rating).limit(3).pluck(:title, :rating, :user_id)
     top_usernames = User.where("id IN (?)", top_three.map{|rev| rev.last}).pluck(:name)
