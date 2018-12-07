@@ -25,7 +25,7 @@ class Book < ApplicationRecord
     order = top_or_bottom == :top ? "DESC" : "ASC"
     reviews_with_ids = self.reviews.order("rating #{order}").limit(number_of).pluck(:title, :rating, :user_id)
     reviews_with_ids.map do |r|
-      r[-1] = User.where("id = #{r[-1]}").pluck(:name)[0]; r
+      r[-1] = User.get_name_for(r[-1]); r
     end
   end
 end
