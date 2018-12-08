@@ -65,6 +65,6 @@ describe 'user sees the show page of one book' do
     expect(page).to have_content("Title: #{top_three[2][0]}")
     expect(page).to have_content("Rating: #{top_three[2][1]}")
 
-    expect(page).to have_content("Average Review Score: #{book_1.reviews.average(:rating)}")
+    expect(page).to have_content("Average Rating: #{book_1.reviews.average(:rating)}")
   end
 end
