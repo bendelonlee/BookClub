@@ -1,0 +1,21 @@
+<aside class="info-container sort-sidebar">
+  <h4>Sort Books by:</h4>
+  <div class="sort-link">
+    <%= link_to("Average Rating:Descending", "/books?sort=rating-desc", id: "rating-desc") %>
+  </div>
+  <div class="sort-link">
+    <%= link_to("Average Rating:Ascending", "/books?sort=rating-asc", id: "rating-asc") %>
+  </div>
+  <div class="sort-link">
+    <%= link_to("Page Count:Descending", "/books?sort=pages-desc", id: "pages-desc") %>
+  </div>
+  <div class="sort-link">
+    <%= link_to("Page Count:Ascending", "/books?sort=pages-asc", id: "pages-asc") %>
+  </div>
+  <div class="sort-link">
+    <%= link_to("Review Count:Descending", "/books?sort=reviews-desc", id: "reviews-desc") %>
+  </div>
+  <div class="sort-link">
+    <%= link_to("Review Count:Ascending", "/books?sort=reviews-asc", id: "reviews-asc") %>
+  </div>
+</aside>

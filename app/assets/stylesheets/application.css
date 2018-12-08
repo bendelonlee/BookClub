@@ -104,6 +104,13 @@ ol {
   .info-container .datum {
     font-size: 12px; }
 
+.sort-sidebar {
+  margin-top: 50px;
+  width: 211px; }
+  .sort-sidebar .sort-link {
+    margin: 5px;
+    padding: 5px; }
+
 .info-container.stats-info {
   padding-left: 30px; }
 
