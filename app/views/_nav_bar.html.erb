@@ -1,27 +1,6 @@
 <nav>
-  <%= link_to("Book Club", root_path) %>
-  <div class="dropdown">
-    <span><%= link_to("Books", books_path) %></span>
-    <div class="dropdown-content">
-      <p> <%= link_to("All Books", books_path) %> </p>
-      <p> <%= link_to("New Book", books_path) %> </p>
-    </div>
-  </div>
-  <div class="dropdown">
-    <span><%= link_to("Authors", authors_path) %></span>
-    <div class="dropdown-content">
-      <p> <%= link_to("All Authors", authors_path) %> </p>
-    </div>
-  </div>
-  <div class="dropdown">
-    <span><%= link_to("Reviews", books_path) %></span>
-    <div class="dropdown-content">
-    </div>
-  </div>
-  <div class="dropdown">
-    <span><%= link_to("Users", books_path) %></span>
-    <div class="dropdown-content">
-    </div>
-  </div>
-  <%= link_to("Authors", authors_path) %>
+  <%= button_to("Book Club", root_path) %>
+  <%= button_to("All Books", books_path) %>
+  <%= button_to("New Book", books_path) %>
+  <%= button_to("All Authors", authors_path) %>
 </nav>
