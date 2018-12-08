@@ -21,4 +21,4 @@
       <% end %>
     </div>
 
-    <%= button_to "Delete Author",  author_path(@author), method: :delete, data: {confirm: "Are you sure?"}  %>
+    <%= link_to "Delete Author",  author_path(@author), method: :delete, data: {confirm: "Are you sure?"}  %>

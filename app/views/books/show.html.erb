@@ -1,11 +1,11 @@
 <h1><%= @book.title %></h1>
 <% if @authors.size == 1 %>
-  <h3>Author:</h3>
-  <h2><%= link_to(@authors.first.name, author_path(@authors.first), id: "author-#{@authors.first.id}") %></h2>
+  <h2>Author:</h2>
+  <h3><%= link_to(@authors.first.name, author_path(@authors.first), id: "author-#{@authors.first.id}") %></h3>
 <% else %>
-  <h3>Authors:</h3>
-  <%= @authors.each do |author| %>
-    <h2><%= link_to(author.name, author_path(author.id)) %></h2>
+  <h2>Authors:</h2>
+  <% @authors.each do |author| %>
+    <h3><%= link_to(author.name, author_path(author.id)) %></h3>
   <% end %>
 <% end %>
 <p>page count: <%= @book.page_count %></p>
@@ -40,6 +40,6 @@
   <p>Rating: <%= review.rating %></p>
   <p><%= review.text %></p>
 <% end %>
-<%= button_to "Delete Book",  book_path(@book), method: :delete, data: {confirm: "Are you sure?"}  %>
+<%= link_to "Delete Book",  book_path(@book), method: :delete, data: {confirm: "Are you sure?"}  %>
 
 <%= link_to 'Add a Review', new_book_review_path(@book.id) %> |

@@ -73,7 +73,7 @@ main {
   padding: 20px;
   width:90%;
   max-width: 750px;
-  height:100%;
+  height: max-content;
   position:absolute;
   top: 40px;
   right: 0px;
@@ -101,7 +101,7 @@ ol {
   list-style-type: decimal;
 }
 
-.button_to {
+.link_to {
   background-color: none;
 }
 

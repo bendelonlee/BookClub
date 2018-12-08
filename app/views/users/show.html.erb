@@ -5,7 +5,7 @@
     <h5><%= review.title %></h5>
     <p>Rating: <%= review.rating %></p>
     <p><%= review.text %></p>
-    <p><%= button_to "Delete Review",  review_path(review), method: :delete, data: {confirm: "Are you sure?"}  %>
+    <p><%= link_to "Delete Review",  review_path(review), method: :delete, data: {confirm: "Are you sure?"}  %>
 </p>
   </div>
 <% end %>
