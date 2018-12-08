@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html>
   <head>
+
     <title>BookClub</title>
     <%= csrf_meta_tags %>
 
+    <%= stylesheet_link_tag    'reset', media: 'all' %>
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+    <link href="https://fonts.googleapis.com/css?family=Mr+De+Haviland" rel="stylesheet">
   </head>
 
   <body>
-    <%= yield %>
+      <div id="color-overlay"></div>
+      <%= render partial: '/nav_bar' %>
+    <main>
+      <%= yield %>
+    </main>
   </body>
 </html>
