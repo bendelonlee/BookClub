@@ -55,9 +55,9 @@ describe 'Books index page' do
       expect(page).to have_content("Average Rating: #{book_2_average}")
       expect(page).to have_content("Average Rating: #{book_3_average}")
 
-      expect(page).to have_content("Number of Reviews: #{@book_1.reviews.count}")
-      expect(page).to have_content("Number of Reviews: #{@book_2.reviews.count}")
-      expect(page).to have_content("Number of Reviews: #{@book_3.reviews.count}")
+      expect(page).to have_content("Total Reviews: #{@book_1.reviews.count}")
+      expect(page).to have_content("Total Reviews: #{@book_2.reviews.count}")
+      expect(page).to have_content("Total Reviews: #{@book_3.reviews.count}")
     end
 
     it 'should show statistics about the three top and lowest rated books' do

@@ -1,50 +1,40 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Book Club</title>
-  </head>
-  <body>
-    <nav>
-      <%= link_to("BookClub", "/", id: "homepage") %>
-      <%= link_to("All books", "/books", id: "books") %>
-    </nav>
-    <%= link_to("Add a book", new_book_path) %>
-
-    <section class='stats'>
-      <h2>Our top and bottom rated books as rated by users</h2>
-      <div class="top_three">
-        <p>Top Three</p>
-        <% @top_three.each do |b| %>
-          <p>Book: <%= b[0] %>, Average Rating: <%= b[1] %></p>
-        <% end %>
-      </div>
-      <div class="bottom_three">
-        <p>Bottom Three</p>
-        <% @bottom_three.each do |b| %>
-          <p>Book: <%= b[0] %>, Average Rating: <%= b[1] %></p>
-        <% end %>
-      </div>
-      <h2>Our top reviewers</h2>
-      <div class="top_reviewers">
-        <% @top_users.each do |u| %>
-          <p>User: <%= u[0] %>, Review Count: <%= u[1] %></p>
-        <% end %>
-      </div>
-    </section>
-
+<%= render partial: "/stats" %>
+    <div class="flex-container">
     <% @books.each do |b| %>
-      <%= link_to(b.title, book_path(b), id: "book-title-#{b.id}") %>
-      <p><%= b.authors.count > 1 ? "Authors: " : "Author: " %>
-        <% b.authors.each do |a| %>
-          <%= link_to(a.name, author_path(a), id: "author-#{a.id}") %>
-        <% end %>
-      </p>
-      <p>Average Rating: <%= b.reviews.average(:rating) %></p>
-      <p>Number of Reviews: <%= b.reviews.count %></p>
-      <p><%= b.page_count %></p>
-      <p><%= b.publish_year %></p>
-    <% end %>
-  </body>
 
-</html>
+      <div class="info-container">
+
+        <h4><%= link_to(b.title, book_path(b), id: "book-title-#{b.id}") %></h4>
+
+        <p>
+          <span class="data-label">
+            <%= b.authors.count > 1 ? "Authors: " : "Author: " %>
+          </span>
+          <% b.authors.each do |a| %>
+            <span class="datum">
+              <%= link_to(a.name, author_path(a), id: "author-#{a.id}") %>
+            </span>
+          <% end %>
+        </p>
+        <% average_rating = b.reviews.average(:rating) %>
+        <p>
+          <span class="data-label"> Average Rating: </span>
+          <span class="datum"><%= average_rating.round(2) if average_rating %></span>
+        </p>
+        <p>
+          <span class="data-label"> Total Reviews: </span>
+          <span class="datum"><%= b.reviews.count %></span>
+        </p>
+        <p>
+          <span class="data-label"> Page Count: </span>
+          <span class="datum"><%= b.page_count %></span>
+        </p>
+        <p>
+          <span class="data-label"> Publish Year: </span>
+          <span class="datum"><%= b.publish_year %></span>
+        </p>
+      </div>
+      <% end %>
+      <%= link_to "Add a book", new_book_path %>
+
+    </div>
