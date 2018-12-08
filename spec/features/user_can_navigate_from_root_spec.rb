@@ -6,15 +6,15 @@ describe 'Root page navigation' do
       visit "/"
 
       within "nav" do
-        click_link("Book Club")
+        click_on("Book Club")
       end
       expect(current_path).to eq("/")
       within "nav" do
-        click_link("All Books")
+        click_on("All Books")
       end
       expect(current_path).to eq("/books")
       within "nav" do
-        click_link("All Authors")
+        click_on("All Authors")
       end
       expect(current_path).to eq("/authors")
     end

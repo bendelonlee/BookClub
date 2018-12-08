@@ -1,26 +1,42 @@
 a {
-  color: #fcc419; }
+  color: burlywood; }
 
-a.visited {
-  color: #ba8247; }
+a:hover {
+  color: #fcc419; }
 
 nav {
   overflow: hidden;
-  background-color: #3b252c;
+  background-color: whitesmoke;
   position: fixed;
   top: 0;
   width: 100%;
+  z-index: 100;
+  display: flex;
+  justify-content: flex-end;
   height: 40px;
-  z-index: 100; }
+  border-width: medium;
+  border-style: outset; }
+  nav a {
+    color: teal;
+    text-decoration: none; }
+
+.link-container {
+  padding: 12px;
+  padding-left: 25px;
+  position: relative;
+  background-color: whitesmoke;
+  padding-right: 25px;
+  margin-left: 10px;
+  color: black; }
 
 body {
   background-image: url("/images/backdrop.jpeg");
-  font-family: sans-serif;
+  font-family: serif;
   background-size: cover;
   background-position: center center;
   background-attachment: fixed;
   z-index: 1;
-  color: white; }
+  color: #e3e4db; }
 
 #body-image-container {
   height: 500px;
@@ -38,6 +54,7 @@ body {
   background: rgba(0, 0, 0, 0.5); }
 
 main {
+  padding: 20px;
   width: 90%;
   max-width: 750px;
   height: 100%;
@@ -45,6 +62,23 @@ main {
   top: 40px;
   right: 0px;
   background-color: rgba(30, 30, 30, 0.5); }
+
+h1 {
+  font-family: 'Mr De Haviland', cursive;
+  font-size: 200px;
+  text-align: center; }
+
+h2 {
+  font-size: 61px;
+  text-align: center;
+  margin: 5px;
+  margin-bottom: 25px; }
+
+ol {
+  list-style-type: decimal; }
+
+.button_to {
+  background-color: pink; }
 
 .flex-container {
   display: flex;
@@ -57,26 +91,17 @@ main {
   background: rgba(0, 0, 0, 0.5);
   border-radius: 10px;
   padding: 7px;
-  width: 200px; }
+  width: 155px; }
+  .info-container h4 {
+    font-size: 18px;
+    margin-bottom: 5px;
+    text-align: center; }
   .info-container .data-label {
     font-size: 10px; }
   .info-container .datum {
     font-size: 12px; }
 
-.dropdown {
-  position: relative;
-  display: inline-block; }
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  padding: 12px 16px;
-  z-index: 1; }
-
-.dropdown:hover .dropdown-content {
-  display: block; }
+.info-container.stats-info {
+  padding-left: 30px; }
 
 /*# sourceMappingURL=application.css.map */

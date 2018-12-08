@@ -1,6 +1,14 @@
 <nav>
-  <%= button_to("Book Club", root_path) %>
-  <%= button_to("All Books", books_path) %>
-  <%= button_to("New Book", books_path) %>
-  <%= button_to("All Authors", authors_path) %>
+  <div class="link-container">
+    <%= link_to("Book Club", root_path) %>
+  </div>
+  <div class="link-container">
+    <%= link_to("All Books", books_path) %>
+  </div>
+  <div class="link-container">
+    <%= link_to("New Book", books_path) %>
+  </div>
+  <div class="link-container">
+    <%= link_to("All Authors", authors_path) %>
+  </div>
 </nav>
