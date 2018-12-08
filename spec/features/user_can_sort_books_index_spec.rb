@@ -56,8 +56,8 @@ describe "Book Index Sorting" do
   it 'should have link to sort by average rating in ascending order' do
     visit books_path
 
-    click_link "#rating-asc"
-
+    click_link "rating-asc"
+    binding.pry
     ordered = Book.joins(:reviews)
       .group("books.id", "books.title")
       .order("AVG(reviews.rating) ASC")
@@ -68,7 +68,7 @@ describe "Book Index Sorting" do
   it 'should have link to sort by average rating in descending order' do
     visit books_path
 
-    click_link "#rating-desc"
+    click_link "rating-desc"
 
     ordered = Book.joins(:reviews)
       .group("books.id", "books.title")
@@ -77,30 +77,30 @@ describe "Book Index Sorting" do
     check_for_order(ordered)
   end
 
-  it 'should have link to sort by number of pages in ascending order' do
+  xit 'should have link to sort by number of pages in ascending order' do
     visit books_path
 
-    click_link "#pages-asc"
+    click_link "pages-asc"
 
     ordered = Book.order("page_count ASC")
 
     check_for_order(ordered)
   end
 
-  it 'should have link to sort by number of pages in descending order' do
+  xit 'should have link to sort by number of pages in descending order' do
     visit books_path
 
-    click_link "#pages-desc"
+    click_link "pages-desc"
 
     ordered = Book.order("page_count DESC")
 
     check_for_order(ordered)
   end
 
-  it 'should have link to sort by number of reviews in ascending order' do
+  xit 'should have link to sort by number of reviews in ascending order' do
     visit books_path
 
-    click_link "#reviews-asc"
+    click_link "reviews-asc"
 
     ordered = Book.joins(:reviews)
       .group("books.id", "books.title")
@@ -109,10 +109,10 @@ describe "Book Index Sorting" do
     check_for_order(ordered)
   end
 
-  it 'should have link to sort by number of reviews in descending order' do
+  xit 'should have link to sort by number of reviews in descending order' do
     visit books_path
 
-    click_link "#reviews-desc"
+    click_link "reviews-desc"
 
     ordered = Book.joins(:reviews)
       .group("books.id", "books.title")
