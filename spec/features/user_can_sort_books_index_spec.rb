@@ -54,6 +54,8 @@ describe "Book Index Sorting" do
     @author_3.books += [@book_9,@book_10,@book_11,@book_12,@book_13,@book_14]
   end
   it 'should have link to sort by average rating in ascending order' do
+    visit books_path
+
     click_link "#rating-asc"
 
     ordered = Book.joins(:reviews)
@@ -63,7 +65,9 @@ describe "Book Index Sorting" do
     check_for_order(ordered)
   end
 
-  xit 'should have link to sort by average rating in descending order' do
+  it 'should have link to sort by average rating in descending order' do
+    visit books_path
+
     click_link "#rating-desc"
 
     ordered = Book.joins(:reviews)
@@ -73,26 +77,48 @@ describe "Book Index Sorting" do
     check_for_order(ordered)
   end
 
-  xit 'should have link to sort by number of pages in ascending order' do
+  it 'should have link to sort by number of pages in ascending order' do
+    visit books_path
+
     click_link "#pages-asc"
 
-    ordered = Book.joins(:reviews)
-      .group("books.id", "books.title")
-      .order("AVG(reviews.rating) ASC")
+    ordered = Book.order("page_count ASC")
 
     check_for_order(ordered)
   end
 
-  xit 'should have link to sort by number of pages in descending order' do
+  it 'should have link to sort by number of pages in descending order' do
+    visit books_path
+
     click_link "#pages-desc"
+
+    ordered = Book.order("page_count DESC")
+
+    check_for_order(ordered)
   end
 
-  xit 'should have link to sort by number of reviews in ascending order' do
+  it 'should have link to sort by number of reviews in ascending order' do
+    visit books_path
+
     click_link "#reviews-asc"
+
+    ordered = Book.joins(:reviews)
+      .group("books.id", "books.title")
+      .order("COUNT(reviews.id) ASC")
+
+    check_for_order(ordered)
   end
 
-  xit 'should have link to sort by number of reviews in descending order' do
+  it 'should have link to sort by number of reviews in descending order' do
+    visit books_path
+
     click_link "#reviews-desc"
+
+    ordered = Book.joins(:reviews)
+      .group("books.id", "books.title")
+      .order("COUNT(reviews.id) DESC")
+
+    check_for_order(ordered)
   end
 
   def check_for_order(ordered_books)
