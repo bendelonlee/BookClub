@@ -101,6 +101,15 @@ ol {
   list-style-type: decimal;
 }
 
+.custom-button {
+  margin: 5px
+  padding: 10px;
+  border-width: medium;
+  border-style: outset;
+  border-color: rgba(0,0,0,0.5);
+  background-color: rgba(0,0,0,0.5);
+}
+
 .link_to {
   background-color: none;
 }
@@ -109,6 +118,7 @@ ol {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  margin-bottom: 40px;
 }
 
 .info-container {
