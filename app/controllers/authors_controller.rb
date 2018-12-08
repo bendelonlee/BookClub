@@ -6,7 +6,6 @@ class AuthorsController < ApplicationController
   def show
     @author = Author.find(params[:id])
     @books = @author.books
-    @top_review = @author.top_review
   end
 
   def destroy

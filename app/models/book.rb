@@ -34,4 +34,9 @@ class Book < ApplicationRecord
       r[-1] = User.get_name_for(r[-1]); r
     end
   end
+
+  def top_review
+    max_rating = Review.where(book: self).maximum(:rating)
+    Review.where(book: self).find_by(rating: max_rating)
+  end
 end
