@@ -6,8 +6,10 @@
   </head>
   <body>
     <nav>
-      <a id='homepage' href="/">BookClub</a>
-      <a id='books' href="/books">All books</a>
+      <%= link_to("BookClub", "/", id: "homepage") %>
+      <%= link_to("All books", "/books", id: "books") %>
+      <p>Sort by: </p>
+      
     </nav>
     <%= link_to "Add a book", new_book_path %>
 
