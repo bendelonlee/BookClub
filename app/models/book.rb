@@ -15,10 +15,16 @@ class Book < ApplicationRecord
   def self.rated_books(top_or_bottom, number = nil)
     order = top_or_bottom == :top ? "DESC" : "ASC"
     joins(:reviews)
-      .group(:book_id, "books.title")
+      .group("books.id", "books.title")
       .order("AVG(reviews.rating) #{order}")
       .limit(number)
       .pluck("books.title", "AVG(reviews.rating)")
+  end
+
+  def self.ordered_by_reviews(asc_or_desc)
+    Book.joins(:reviews)
+      .group("books.id", "books.title")
+      .order("COUNT(reviews.id) #{asc_or_desc}")
   end
 
   def get_reviews(top_or_bottom, number_of)
