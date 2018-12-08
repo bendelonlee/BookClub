@@ -22,7 +22,7 @@ class Book < ApplicationRecord
   end
 
   def self.ordered_by_reviews(asc_or_desc)
-    Book.joins(:reviews)
+    joins(:reviews)
       .group("books.id", "books.title")
       .order("COUNT(reviews.id) #{asc_or_desc}")
   end
