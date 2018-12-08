@@ -63,7 +63,7 @@ class BooksController < ApplicationController
   def sorted_books(sort_param)
     case sort_param
     when /rating-(desc|asc)/ then Book.ordered_by_rating(sort_param.split('-')[1])
-    when /pages-(desc|asc)/ then Book.order("pages #{sort_param.split('-')[1]}")
+    when /pages-(desc|asc)/ then Book.order("page_count #{sort_param.split('-')[1]}")
     when /reviews-(desc|asc)/ then Book.ordered_by_reviews(sort_param.split('-')[1])
     else nil
     end
