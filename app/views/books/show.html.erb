@@ -14,6 +14,7 @@
 <% unless @top_reviews.empty? && @bottom_reviews.empty? %>
 <section class='review-stats'>
   <h2>Review Statistics</h2>
+    <p>Average Rating: <%= @average_rating %></p>
     <div class="top-reviews">
       <% @top_reviews.each do |r| %>
         <p>User: <%= r[2] %></p>
