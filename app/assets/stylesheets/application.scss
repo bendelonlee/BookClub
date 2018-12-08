@@ -57,9 +57,25 @@ main {
   background-color: rgba(30, 30, 30, 0.5);
 }
 
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
 .info-container {
   background: rgba(0, 0, 0, 0.5);
-
+  margin: 5px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  padding: 7px;
+  width: 200px;
+  .data-label {
+    font-size: 10px;
+  }
+  .datum {
+    font-size: 12px;
+  }
 }
 // dropdown
 
