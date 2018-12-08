@@ -6,22 +6,17 @@ describe 'Root page navigation' do
       visit "/"
 
       within "nav" do
-        within "#homepage" do
-          expect(page).to have_content("BookClub")
-        end
-
-        within "#books" do
-          expect(page).to have_content("All books")
-        end
+        click_link("Book Club")
       end
-      
-      click_link "books"
-
-      expect(current_path).to eq("/books")
-
-      click_link "homepage"
-
       expect(current_path).to eq("/")
+      within "nav" do
+        click_link("All Books")
+      end
+      expect(current_path).to eq("/books")
+      within "nav" do
+        click_link("All Authors")
+      end
+      expect(current_path).to eq("/authors")
     end
   end
 end

@@ -1,6 +1,68 @@
+a {
+  color: #fcc419; }
+
+a.visited {
+  color: #ba8247; }
+
+nav {
+  overflow: hidden;
+  background-color: #3b252c;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 40px;
+  z-index: 100; }
+
 body {
-  background-color: #a8dadc;
+  background-image: url("/images/backdrop.jpeg");
   font-family: sans-serif;
-}
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+  z-index: 1;
+  color: white; }
+
+#body-image-container {
+  height: 500px;
+  position: fixed;
+  width: 100%; }
+
+#color-overlay {
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  overflow: auto;
+  top: 0px;
+  left: 0px;
+  background: rgba(0, 0, 0, 0.5); }
+
+main {
+  width: 90%;
+  max-width: 750px;
+  height: 100%;
+  position: absolute;
+  top: 40px;
+  right: 0px;
+  background-color: rgba(30, 30, 30, 0.5); }
+
+.info-container {
+  background: rgba(0, 0, 0, 0.5); }
+
+.dropdown {
+  position: relative;
+  display: inline-block; }
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  padding: 12px 16px;
+  z-index: 1; }
+
+.dropdown:hover .dropdown-content {
+  display: block; }
 
 /*# sourceMappingURL=application.css.map */

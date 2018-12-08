@@ -5,10 +5,6 @@
     <title>Book Club</title>
   </head>
   <body>
-    <nav>
-      <a id='homepage' href="/">BookClub</a>
-      <a id='books' href="/books">All books</a>
-    </nav>
     <%= link_to "Add a book", new_book_path %>
 
     <section class='stats'>
@@ -34,12 +30,14 @@
     </section>
 
     <% @books.each do |b| %>
-      <a id='book-title-<%= b.id %>' href="/books/<%= b.id %>"><%= b.title %></a>
-      <p><%= b.authors.count > 1 ? "Authors: " : "Author: " %><%= b.authors.map(&:name).join(" ") %></p>
-      <p>Average Rating: <%= b.reviews.average(:rating) %></p>
-      <p>Number of Reviews: <%= b.reviews.count %></p>
-      <p><%= b.page_count %></p>
-      <p><%= b.publish_year %></p>
+      <div class="info-container">
+        <a id='book-title-<%= b.id %>' href="/books/<%= b.id %>"><%= b.title %></a>
+        <p><%= b.authors.count > 1 ? "Authors: " : "Author: " %><%= b.authors.map(&:name).join(" ") %></p>
+        <p>Average Rating: <%= b.reviews.average(:rating) %></p>
+        <p>Number of Reviews: <%= b.reviews.count %></p>
+        <p><%= b.page_count %></p>
+        <p><%= b.publish_year %></p>
+      </div>
     <% end %>
   </body>
 
