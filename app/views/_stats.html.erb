@@ -5,7 +5,7 @@
       <h4>Top Books</h4>
       <ol>
       <% @top_three.each do |b| %>
-        <li>Book: <%= b[0] %>, Average Rating: <%= b[1] %></li>
+        <li><%= b[0] %>, Rating: <%= b[1] %></li>
       <% end %>
       </ol>
     </div>
@@ -13,7 +13,7 @@
       <h4>Bottom Books</h4>
       <ol>
       <% @bottom_three.each do |b| %>
-        <li>Book: <%= b[0] %>, Average Rating: <%= b[1] %></li>
+        <li><%= b[0] %>, Rating: <%= b[1] %></li>
       <% end %>
       </ol>
     </div>
@@ -21,7 +21,7 @@
       <h4>Our top reviewers</h4>
       <ol>
       <% @top_users.each do |u| %>
-        <li>User: <%= u[0] %>, Review Count: <%= u[1] %></li>
+        <li><%= u[0] %>, Total Reviews: <%= u[1] %></li>
       <% end %>
       </ol>
     </div>
