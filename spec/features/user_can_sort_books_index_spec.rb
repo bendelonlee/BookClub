@@ -57,7 +57,7 @@ describe "Book Index Sorting" do
     visit books_path
 
     click_link "rating-asc"
-    binding.pry
+
     ordered = Book.joins(:reviews)
       .group("books.id", "books.title")
       .order("AVG(reviews.rating) ASC")
@@ -77,7 +77,7 @@ describe "Book Index Sorting" do
     check_for_order(ordered)
   end
 
-  xit 'should have link to sort by number of pages in ascending order' do
+  it 'should have link to sort by number of pages in ascending order' do
     visit books_path
 
     click_link "pages-asc"
@@ -87,7 +87,7 @@ describe "Book Index Sorting" do
     check_for_order(ordered)
   end
 
-  xit 'should have link to sort by number of pages in descending order' do
+  it 'should have link to sort by number of pages in descending order' do
     visit books_path
 
     click_link "pages-desc"
@@ -97,7 +97,7 @@ describe "Book Index Sorting" do
     check_for_order(ordered)
   end
 
-  xit 'should have link to sort by number of reviews in ascending order' do
+  it 'should have link to sort by number of reviews in ascending order' do
     visit books_path
 
     click_link "reviews-asc"
@@ -109,7 +109,7 @@ describe "Book Index Sorting" do
     check_for_order(ordered)
   end
 
-  xit 'should have link to sort by number of reviews in descending order' do
+  it 'should have link to sort by number of reviews in descending order' do
     visit books_path
 
     click_link "reviews-desc"
@@ -121,10 +121,10 @@ describe "Book Index Sorting" do
     check_for_order(ordered)
   end
 
-  def check_for_order(ordered_books)
-    ordered_books.each_with_index do |book, i|
-      break if i == ordered.length
-      expect("book-#{book.id}").to appear_before("book-#{ordered[i+1].title}")
+  def check_for_order(ordered)
+    ordered.each_with_index do |book, i|
+      break if i + 1 == ordered.length
+      expect("book-#{book.id}").to appear_before("book-#{ordered[i+1].id}")
     end
   end
 end
