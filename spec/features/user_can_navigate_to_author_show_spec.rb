@@ -28,7 +28,7 @@ describe 'Author names navigate to author show page' do
     expect(current_path).to eq(author_path(@author_2))
   end
 
-  xit 'links on author index page' do
+  it 'links on author index page' do
     visit authors_path
 
     click_link "author-#{@author_3.id}"
