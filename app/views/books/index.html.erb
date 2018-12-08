@@ -9,7 +9,7 @@
       <%= link_to("BookClub", "/", id: "homepage") %>
       <%= link_to("All books", "/books", id: "books") %>
       <p>Sort by: </p>
-      
+
     </nav>
     <%= link_to("Add a book", new_book_path) %>
 
@@ -36,16 +36,18 @@
     </section>
 
     <% @books.each do |b| %>
-      <%= link_to(b.title, book_path(b), id: "book-title-#{b.id}") %>
-      <p><%= b.authors.count > 1 ? "Authors: " : "Author: " %>
-        <% b.authors.each do |a| %>
-          <%= link_to(a.name, author_path(a), id: "author-#{a.id}") %>
-        <% end %>
-      </p>
-      <p>Average Rating: <%= b.reviews.average(:rating) %></p>
-      <p>Number of Reviews: <%= b.reviews.count %></p>
-      <p><%= b.page_count %></p>
-      <p><%= b.publish_year %></p>
+      <div id='book-<%= b.id%>' class="book">
+        <%= link_to(b.title, book_path(b), id: "book-title-#{b.id}") %>
+        <p><%= b.authors.count > 1 ? "Authors: " : "Author: " %>
+          <% b.authors.each do |a| %>
+            <%= link_to(a.name, author_path(a), id: "author-#{a.id}") %>
+          <% end %>
+        </p>
+        <p>Average Rating: <%= b.reviews.average(:rating) %></p>
+        <p>Number of Reviews: <%= b.reviews.count %></p>
+        <p><%= b.page_count %></p>
+        <p><%= b.publish_year %></p>
+      </div>
     <% end %>
   </body>
 
