@@ -45,4 +45,8 @@ class Book < ApplicationRecord
     max_rating = Review.where(book: self).maximum(:rating)
     Review.where(book: self).find_by(rating: max_rating)
   end
+
+  def average_review
+    reviews.average(:rating)
+  end
 end
