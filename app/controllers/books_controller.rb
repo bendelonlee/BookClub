@@ -1,6 +1,7 @@
 class BooksController < ApplicationController
   def index
-    @books = Book.all
+    @books = sorted_books(params[:sort]) if params[:sort]
+    @books = Book.all unless @books
     @top_three = Book.rated_books(:top, 3)
     @bottom_three = Book.rated_books(:bottom, 3)
     @top_users = User.top_users_by_reviews(3)
@@ -58,6 +59,15 @@ class BooksController < ApplicationController
   end
 
   private
+
+  def sorted_books(sort_param)
+    case sort_param
+    when /rating-(desc|asc)/ then Book.ordered_by_rating(sort_param.split('-')[1])
+    when /pages-(desc|asc)/ then Book.order("page_count #{sort_param.split('-')[1]}")
+    when /reviews-(desc|asc)/ then Book.ordered_by_reviews(sort_param.split('-')[1])
+    else nil
+    end
+  end
 
   def book_params
     temp_params = params.require(:book).permit(:title, :page_count)
