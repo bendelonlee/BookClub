@@ -2,8 +2,7 @@
     <div class="flex-container">
     <% @books.each do |b| %>
 
-      <div class="info-container">
-
+      <div id='book-<%= b.id %>' class="info-container">
         <h4><%= link_to(b.title, book_path(b), id: "book-title-#{b.id}") %></h4>
 
         <p>
@@ -36,5 +35,4 @@
       </div>
       <% end %>
       <%= link_to "Add a book", new_book_path %>
-
     </div>
