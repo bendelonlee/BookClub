@@ -8,12 +8,8 @@ describe 'user_adds_a_review_to_a_book' do
 
       visit book_path(@book_1.id)
       click_on "Add a Review"
-
     end
     it 'links them to a page where they can create a book' do
-
-
-
       expect(current_path).to eq(new_book_review_path(@book_1.id))
 
       expect(page).to have_content(@book_1.title)
@@ -65,6 +61,5 @@ describe 'user_adds_a_review_to_a_book' do
       click_on "Submit Review"
       expect(page).to have_content("Rating is a required field")
     end
-    # it "adds user if no user exists with name"
   end
 end

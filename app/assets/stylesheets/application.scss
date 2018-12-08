@@ -1,11 +1,133 @@
 
-$color1: rgba(230, 57, 70, 1);
-$color2: rgba(241, 250, 238, 1);
-$background: rgba(168, 218, 220, 1);
-$color4: rgba(69, 123, 157, 1);
-$color5: rgba(29, 53, 87, 1);
+$text: rgba(227, 228, 219, 1);
+$color2: rgba(205, 205, 205, 1);
+$color3: rgba(147, 145, 150, 1);
+$dark: rgba(59, 37, 44, 1);
+$accent: rgba(252, 196, 25, 1);
+$visited: rgb(186, 130, 71);
+
+a {
+  color: burlywood;
+}
+
+a:hover {color: $accent;}
+
+
+nav {
+  overflow: hidden;
+  background-color: whitesmoke;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  display: flex;
+  justify-content: flex-end;
+  height: 40px;
+  border-width: medium;
+  border-style: outset;
+  a {
+    color: teal;
+    text-decoration: none;
+  }
+
+}
+.link-container {
+  padding: 12px;
+  padding-left: 25px;
+  position: relative;
+  background-color: whitesmoke;
+  padding-right: 25px;
+  margin-left: 10px;
+  color: black;
+}
+
 
 body {
-  background-color: $background;
-  font-family: sans-serif;
+  background-image: url("/images/backdrop.jpeg");
+  font-family: serif;
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+  z-index: 1;
+  color: $text;
+}
+#body-image-container {
+  height: 500px;
+  position: fixed;
+  width: 100%;
+}
+#color-overlay {
+   z-index: -1;
+   height: 100%;
+   width: 100%;
+   position: fixed;
+   overflow: auto;
+   top: 0px;
+   left: 0px;
+   background: rgba(0, 0, 0, 0.5);
+}
+
+
+
+main {
+  padding: 20px;
+  width:90%;
+  max-width: 750px;
+  height:100%;
+  position:absolute;
+  top: 40px;
+  right: 0px;
+  background-color: rgba(30, 30, 30, 0.5);
+
+}
+h1 {
+  font-family: 'Mr De Haviland', cursive;
+  font-size: 200px;
+  text-align: center;
+}
+h2 {
+  font-size: 61px;
+  text-align: center;
+  margin: 5px;
+  margin-bottom: 25px;
+
+}
+
+ol {
+  list-style-type: decimal;
+}
+
+.button_to {
+  background-color: pink;
+}
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.info-container {
+  background: rgba(0, 0, 0, 0.5);
+  margin: 5px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  padding: 7px;
+  width: 155px;
+  h4 {
+    font-size: 18px;
+    margin-bottom: 5px;
+    text-align: center;
+  }
+
+  .data-label {
+    font-size: 10px;
+  }
+  .datum {
+    font-size: 12px;
+  }
+}
+
+.info-container.stats-info {
+    padding-left: 30px;
 }
