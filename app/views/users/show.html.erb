@@ -1,7 +1,7 @@
 <h1><%= @user.name %></h1>
 <% @reviews.each do |review| %>
   <div id="review-<%= review.id%>-container">
-    <h4>Review For: <%= review.book.title %></h4>
+    <h4>Review For: <%= link_to(review.book.title, book_path(review.book.id), id: "book-title-#{review.book.id}") %></h4>
     <h5><%= review.title %></h5>
     <p>Rating: <%= review.rating %></p>
     <p><%= review.text %></p>
