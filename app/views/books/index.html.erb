@@ -30,14 +30,19 @@
     </section>
 
     <% @books.each do |b| %>
-      <div class="info-container">
-        <a id='book-title-<%= b.id %>' href="/books/<%= b.id %>"><%= b.title %></a>
-        <p><%= b.authors.count > 1 ? "Authors: " : "Author: " %><%= b.authors.map(&:name).join(" ") %></p>
-        <p>Average Rating: <%= b.reviews.average(:rating) %></p>
-        <p>Number of Reviews: <%= b.reviews.count %></p>
-        <p><%= b.page_count %></p>
-        <p><%= b.publish_year %></p>
-      </div>
+
+    <div class="info-container">
+      <%= link_to(b.title, book_path(b), id: "book-title-#{b.id}") %>
+      <p><%= b.authors.count > 1 ? "Authors: " : "Author: " %>
+        <% b.authors.each do |a| %>
+          <%= link_to(a.name, author_path(a), id: "author-#{a.id}") %>
+        <% end %>
+      </p>
+      <p>Average Rating: <%= b.reviews.average(:rating) %></p>
+      <p>Number of Reviews: <%= b.reviews.count %></p>
+      <p><%= b.page_count %></p>
+      <p><%= b.publish_year %></p>
+    </div>
     <% end %>
   </body>
 

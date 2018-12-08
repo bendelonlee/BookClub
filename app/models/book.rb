@@ -8,14 +8,11 @@ class Book < ApplicationRecord
   has_many :book_authors, :dependent => :destroy
   has_many :authors, through: :book_authors
 
-
-
-
   def titleize_title
     self.title = title.titleize if title
   end
 
-  def self.rated_books(top_or_bottom, number)
+  def self.rated_books(top_or_bottom, number = nil)
     order = top_or_bottom == :top ? "DESC" : "ASC"
     joins(:reviews)
       .group(:book_id, "books.title")
