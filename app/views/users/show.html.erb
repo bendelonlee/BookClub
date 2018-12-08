@@ -1,11 +1,15 @@
 <h1><%= @user.name %></h1>
-<% @reviews.each do |review| %>
-  <div id="review-<%= review.id%>-container">
-    <h4>Review For: <%= link_to(review.book.title, book_path(review.book.id), id: "book-title-#{review.book.id}") %></h4>
-    <h5><%= review.title %></h5>
-    <p>Rating: <%= review.rating %></p>
-    <p><%= review.text %></p>
-    <p><%= link_to "Delete Review",  review_path(review), method: :delete, data: {confirm: "Are you sure?"}  %>
-</p>
-  </div>
-<% end %>
+<div class="flex-container">
+  <% @reviews.each do |review| %>
+    <div class="info-container">
+      <div id="review-<%= review.id%>-container">
+        <h4>Review For: <%= link_to(review.book.title, book_path(review.book.id), id: "book-title-#{review.book.id}") %></h4>
+        <h5><%= review.title %></h5>
+        <p>Rating: <%= review.rating %></p>
+        <p><%= review.text %></p>
+        <p><%= link_to "Delete Review",  review_path(review), method: :delete, data: {confirm: "Are you sure?"}  %>
+        </p>
+      </div>
+    </div>
+  <% end %>
+</div>

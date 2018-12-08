@@ -81,7 +81,8 @@ ol {
   list-style-type: decimal; }
 
 .custom-button {
-  padding: 11px;
+  margin: 5px;
+  padding: 10px;
   border-width: medium;
   border-style: outset;
   border-color: rgba(0, 0, 0, 0.5);
