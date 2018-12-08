@@ -10,6 +10,12 @@
           <p>Additional Author: <%= link_to(extra_auth.name, author_path(extra_auth)) %></p>
         <% end %>
       <% end %>
+      <h6>Top Review:</h6>
+      <p>
+        <%= @top_review.title %>
+        Rating: <%= @top_review.rating %>
+        --<%= @top_review.user.name %>
+      </p>
       </div>
       <p><%= button_to "Delete Author",  author_path(@author), method: :delete, data: {confirm: "Are you sure?"}  %>
 

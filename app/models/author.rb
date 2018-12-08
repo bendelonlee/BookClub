@@ -8,4 +8,9 @@ class Author < ApplicationRecord
   def titleize_name
     self.name = name.titleize if name
   end
+
+  def top_review
+    require 'pry'; binding.pry
+    Review.where(author: self).
+  end
 end
