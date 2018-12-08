@@ -1,7 +1,7 @@
     <h1><%= @author.name %></h1>
     <% @books.each do |book| %>
       <div id="book-<%= book.id %>-container">
-        <%= link_to(book.title, book_path(book.id)) %>
+        <%= link_to(book.title, book_path(book.id), id: "book-title-#{book.id}") %>
         <p>Page Count: <%= book.page_count %></p>
         <p>Publish Year: <%= book.publish_year %></p>
         <% if book.authors.size > 1 %>
@@ -17,6 +17,7 @@
             Rating: <%= book.top_review.rating %>
             --<%= book.top_review.user.name %>
           </p>
+
         <% end %>
       </div>
       <p><%= button_to "Delete Author",  author_path(@author), method: :delete, data: {confirm: "Are you sure?"}  %>
