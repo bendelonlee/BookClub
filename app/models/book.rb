@@ -21,8 +21,14 @@ class Book < ApplicationRecord
       .pluck("books.title", "AVG(reviews.rating)")
   end
 
+  def self.ordered_by_rating(asc_or_desc)
+    joins(:reviews)
+      .group("books.id", "books.title")
+      .order("AVG(reviews.rating) #{asc_or_desc}")
+  end
+
   def self.ordered_by_reviews(asc_or_desc)
-    Book.joins(:reviews)
+    joins(:reviews)
       .group("books.id", "books.title")
       .order("COUNT(reviews.id) #{asc_or_desc}")
   end
