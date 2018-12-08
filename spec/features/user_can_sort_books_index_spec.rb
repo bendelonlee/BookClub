@@ -98,7 +98,7 @@ describe "Book Index Sorting" do
   def check_for_order(ordered_books)
     ordered_books.each_with_index do |book, i|
       break if i == ordered.length
-      expect(book.title).to appear_before(ordered[i+1].title)
+      expect("book-#{book.id}").to appear_before("book-#{ordered[i+1].title}")
     end
   end
 end
