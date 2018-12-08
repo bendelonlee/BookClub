@@ -16,5 +16,14 @@ RSpec.describe Book, type: :model do
       book_1.titleize_title
       expect(book_1.title).to eq("Hey You")
     end
+    it ".top_review" do
+      book_1 = Book.create!(title: "Your Baby Will Be Fine", page_count: 201, publish_year: 2002)
+      user_1 = User.create!(name: "user_1")
+      user_2 = User.create!(name: "user_2")
+      review_1 =  user_1.reviews.create!(title: "Good!", text: "Liked it!", rating: 5, book:  book_1)
+      review_2 =  user_2.reviews.create!(title: "Bad!", text: "Didn't Like it!", rating: 1, book: book_1)
+      expect(book_1.top_review).to eq(review_1)
+    end
   end
+
 end
