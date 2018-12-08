@@ -74,11 +74,14 @@ h2 {
   margin: 5px;
   margin-bottom: 25px; }
 
+h6 {
+  text-align: center; }
+
 ol {
   list-style-type: decimal; }
 
 .button_to {
-  background-color: pink; }
+  background-color: none; }
 
 .flex-container {
   display: flex;
