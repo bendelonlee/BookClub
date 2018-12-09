@@ -29,7 +29,7 @@ describe 'user sees the show page of one book' do
     expect(page).to have_content(review_2.text)
   end
 
-  xit 'shows statistics about the book' do
+  it 'shows statistics about the book' do
     book_1 = Book.create!(title: Faker::Book.unique.title, page_count: rand(900), publish_year: rand(1950..2018))
 
     user_1 = User.create!(name: Faker::Name.unique.name)
