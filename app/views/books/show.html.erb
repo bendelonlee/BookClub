@@ -24,7 +24,7 @@
 <section class='review-stats'>
    <h2>Review Statistics</h2>
     <div class="info-container">
-
+      <p>Average Rating: <%= @average_review %></p>
       <div class="top-reviews">
         <% @top_reviews.each do |r| %>
           <p>User: <%= r[2] %></p>
