@@ -97,20 +97,20 @@ describe 'Books index page' do
       top_three = books.sort_by {|book| book.reviews.average(:rating) }[0..2]
       top_three = books.sort_by {|book| -book.reviews.average(:rating) }[0..2]
 
-      top_three_expected = "#{top_three[0].title}, " +
-                 "Rating: #{top_three[0].reviews.average(:rating).round(2)} " +
-                 "#{top_three[1].title}, " +
-                 "Rating: #{top_three[1].reviews.average(:rating).round(2)} " +
-                 "#{top_three[2].title}, " +
-                 "Rating: #{top_three[2].reviews.average(:rating).round(2)}"
+      top_three_expected = "Book: #{top_three[0].title}, " +
+                 "Average Rating: #{top_three[0].reviews.average(:rating).round(2)} " +
+                 "Book: #{top_three[1].title}, " +
+                 "Average Rating: #{top_three[1].reviews.average(:rating).round(2)} " +
+                 "Book: #{top_three[2].title}, " +
+                 "Average Rating: #{top_three[2].reviews.average(:rating).round(2)}"
       expect(page).to have_content(top_three_expected)
 
-      bottom_three_expected = "#{top_three[0].title}, " +
-                 "Rating: #{top_three[0].reviews.average(:rating).round(2)} " +
-                 "#{top_three[1].title}, " +
-                 "Rating: #{top_three[1].reviews.average(:rating).round(2)} " +
-                 "#{top_three[2].title}, " +
-                 "Rating: #{top_three[2].reviews.average(:rating).round(2)}"
+      bottom_three_expected = "Book: #{top_three[0].title}, " +
+                 "Average Rating: #{top_three[0].reviews.average(:rating).round(2)} " +
+                 "Book: #{top_three[1].title}, " +
+                 "Average Rating: #{top_three[1].reviews.average(:rating).round(2)} " +
+                 "Book: #{top_three[2].title}, " +
+                 "Average Rating: #{top_three[2].reviews.average(:rating).round(2)}"
       expect(page).to have_content(bottom_three_expected)
 
     end
@@ -141,13 +141,11 @@ describe 'Books index page' do
 
       visit books_path
 
-      top_users_expected = "#{user_3.name}, Total Reviews: #{user_3.reviews.size} " +
-                           "#{user_2.name}, Total Reviews: #{user_2.reviews.size} " +
-                           "#{user_4.name}, Total Reviews: #{user_4.reviews.size}"
+      top_users_expected = "User: #{user_3.name}, Total Reviews: #{user_3.reviews.size} " +
+                           "User: #{user_2.name}, Total Reviews: #{user_2.reviews.size} " +
+                           "User: #{user_4.name}, Total Reviews: #{user_4.reviews.size}"
 
       expect(page).to have_content(top_users_expected)
-
-
     end
   end
 end
