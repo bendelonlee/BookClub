@@ -140,7 +140,6 @@ describe 'Books index page' do
         book_4.reviews.create!(title: "#{Faker::App.name} #{Faker::Ancient.god}", rating: 4, user_id: user_4.id, text: Faker::RickAndMorty.quote)
 
       visit books_path
-      save_and_open_page
 
       top_users_expected = "#{user_3.name}, Total Reviews: #{user_3.reviews.size} " +
                            "#{user_2.name}, Total Reviews: #{user_2.reviews.size} " +
