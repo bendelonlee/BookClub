@@ -21,7 +21,7 @@
       <h4>Our top reviewers</h4>
       <ol>
       <% @top_users.each do |u| %>
-        <li>User: <%= u[0] %>, Review Count: <%= u[1] %></li>
+        <li>User: <%= link_to(u[1], user_path(u[0]), id: "user-name-#{u[0]}") %>, Review Count: <%= u[2] %></li>
       <% end %>
       </ol>
     </div>
