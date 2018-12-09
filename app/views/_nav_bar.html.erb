@@ -6,28 +6,9 @@
     <%= link_to("All Books", books_path) %>
   </div>
   <div class="link-container">
-    <%= link_to("New Book", books_path) %>
+    <%= link_to("New Book", new_book_path) %>
   </div>
   <div class="link-container">
     <%= link_to("All Authors", authors_path) %>
-  </div>
-  <p>Sort By: </p>
-  <div class="link-container">
-    <%= link_to("Average Rating:Descending", "/books?sort=rating-desc", id: "rating-desc") %>
-  </div>
-  <div class="link-container">
-    <%= link_to("Average Rating:Ascending", "/books?sort=rating-asc", id: "rating-asc") %>
-  </div>
-  <div class="link-container">
-    <%= link_to("Page Count:Descending", "/books?sort=pages-desc", id: "pages-desc") %>
-  </div>
-  <div class="link-container">
-    <%= link_to("Page Count:Ascending", "/books?sort=pages-asc", id: "pages-asc") %>
-  </div>
-  <div class="link-container">
-    <%= link_to("Review Count:Descending", "/books?sort=reviews-desc", id: "reviews-desc") %>
-  </div>
-  <div class="link-container">
-    <%= link_to("Review Count:Ascending", "/books?sort=reviews-asc", id: "reviews-asc") %>
   </div>
 </nav>

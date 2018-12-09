@@ -17,6 +17,10 @@ describe 'Root page navigation' do
         click_on("All Authors")
       end
       expect(current_path).to eq("/authors")
+      within "nav" do
+        click_on("New Book")
+      end
+      expect(current_path).to eq("/books/new")
     end
   end
 end
