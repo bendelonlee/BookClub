@@ -50,7 +50,7 @@
   <% @reviews.each do |review| %>
   <div class="info-container">
     <p>Title: <%= review.title %></p>
-    <p>User: <%=link_to(review.user.name, user_path(review.user))%></p>
+    <p>User: <%=link_to(review.user.name, user_path(review.user), id: "user-name-#{review.user.id}")%></p>
     <p>Rating: <%= review.rating %></p>
     <p><%= review.text %></p>
   </div>
