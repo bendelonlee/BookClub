@@ -9,16 +9,19 @@ nav {
   background-color: whitesmoke;
   position: fixed;
   top: 0;
-  width: 100%;
+  width: 785px;
   z-index: 100;
   display: flex;
-  justify-content: flex-end;
   height: 40px;
   border-width: medium;
-  border-style: outset; }
+  border-style: outset;
+  justify-content: center;
+  right: 0; }
   nav a {
     color: teal;
     text-decoration: none; }
+  nav a:hover {
+    color: black; }
 
 .link-container {
   padding: 12px;
