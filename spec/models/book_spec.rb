@@ -35,5 +35,5 @@ RSpec.describe Book, type: :model do
       review_2 =  user_2.reviews.create!(title: "Bad!", text: "Didn't Like it!", rating: 1, book: book_1)
       expect(book_1.top_review).to eq(review_1)
     end
-   end
+ end
 end

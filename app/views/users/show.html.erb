@@ -1,8 +1,10 @@
 <h1><%= @user.name %></h1>
+<%= render partial: 'users/reviews_sort_form' %>
+
 <div class="flex-container">
   <% @reviews.each do |review| %>
     <div class="info-container">
-      <div id="review-<%= review.id%>-container">
+      <div class='review' id="review-<%= review.id%>-container">
         <h4>Review For: <%= link_to(review.book.title, book_path(review.book.id), id: "book-title-#{review.book.id}") %></h4>
         <h5><%= review.title %></h5>
         <p>Rating: <%= review.rating %></p>
