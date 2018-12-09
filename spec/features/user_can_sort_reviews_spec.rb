@@ -15,7 +15,7 @@ describe 'User Reviews Sorting' do
     visit user_path(@user)
   end
 
-  xit 'should sort reviews by rating ascending and date ascending' do
+  it 'should sort reviews by rating ascending and date ascending' do
     page.select("Ascending", from: "By Rating")
     page.select("Ascending", from: "By Date")
 
