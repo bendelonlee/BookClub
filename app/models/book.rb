@@ -49,4 +49,8 @@ class Book < ApplicationRecord
   def average_review
     reviews.average(:rating)
   end
+
+  def sort_reviews(sort_params)
+    reviews.order("rating #{sort_params[:rating]}, reviews.created_at #{sort_params[:date]}")
+  end
 end
