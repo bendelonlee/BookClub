@@ -124,7 +124,9 @@ ol {
 
 .sort-sidebar {
   margin-top: 50px;
-  width: 211px; }
+  width: 211px;
+  position: fixed;
+  right: 800px; }
   .sort-sidebar .sort-link {
     margin: 5px;
     padding: 5px; }
