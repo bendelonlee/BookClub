@@ -81,12 +81,15 @@ main {
 
 }
 h1 {
-  font-family: 'Mr De Haviland', cursive;
-  font-size: 200px;
+  font-variant: small-caps;
+  font-size: 80px;
   text-align: center;
+  margin: 30px;
+  margin-bottom: 50px;
 }
 h2 {
-  font-size: 61px;
+  font-family: 'Mr De Haviland', cursive;
+  font-size: 40px;
   text-align: center;
   margin: 5px;
   margin-bottom: 25px;
@@ -128,20 +131,22 @@ ol {
   padding: 7px;
   width: 155px;
   overflow: scroll;
-  height: 250px;
+  max-height: 250px;
   h4 {
     font-size: 18px;
     margin-bottom: 5px;
     text-align: center;
+    font-variant: small-caps;
   }
 
 
 
   .data-label {
-    font-size: 10px;
+    font-size: 13px;
   }
   .datum {
-    font-size: 12px;
+    font-size: 14px;
+    font-weight: bolder;
   }
 }
 
