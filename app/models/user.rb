@@ -9,7 +9,7 @@ class User < ApplicationRecord
       .group(:user_id, :name)
       .order("COUNT(user_id) DESC", :name)
       .limit(num_of_users)
-      .pluck(:name, "COUNT(user_id)")
+      .pluck(:user_id, :name, "COUNT(user_id)")
   end
 
   def self.get_name_for(user_id)
