@@ -73,7 +73,7 @@ main {
   padding: 20px;
   width:90%;
   max-width: 750px;
-  height:100%;
+  height: max-content;
   position:absolute;
   top: 40px;
   right: 0px;
@@ -93,18 +93,32 @@ h2 {
 
 }
 
+h6 {
+  text-align: center;
+}
+
 ol {
   list-style-type: decimal;
 }
 
-.button_to {
-  background-color: pink;
+.custom-button {
+  margin: 5px;
+  padding: 10px;
+  border-width: medium;
+  border-style: outset;
+  border-color: rgba(0,0,0,0.5);
+  background-color: rgba(0,0,0,0.5);
+}
+
+.link_to {
+  background-color: none;
 }
 
 .flex-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  margin-bottom: 40px;
 }
 
 .info-container {
@@ -120,11 +134,22 @@ ol {
     text-align: center;
   }
 
+
+
   .data-label {
     font-size: 10px;
   }
   .datum {
     font-size: 12px;
+  }
+}
+
+.sort-sidebar {
+  margin-top: 50px;
+  width: 211px;
+  .sort-link {
+    margin: 5px;
+    padding: 5px;
   }
 }
 
