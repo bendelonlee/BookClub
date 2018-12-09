@@ -1,3 +1,7 @@
-<%= @authors.each do |a| %>
-  <%= link_to(a.name, author_path(a), id: "author-#{a.id}") %>
-<% end %>
+  <h1>Authors</h1>
+  <p></p>
+    <% @authors.each do |a| %>
+      <h6>
+        <%= link_to(a.name, author_path(a), id: "author-#{a.id}") %>
+      </h6>
+    <% end %>

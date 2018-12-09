@@ -1,4 +1,4 @@
-<%= render partial: "/stats" %>
+<%= render partial: "books/stats" %>
     <div class="flex-container">
     <% @books.each do |b| %>
 
@@ -34,5 +34,5 @@
         </p>
       </div>
       <% end %>
-      <%= link_to "Add a book", new_book_path %>
     </div>
+    <%= link_to "Add a book", new_book_path, class: "custom-button" %>

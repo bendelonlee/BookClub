@@ -15,4 +15,8 @@ class User < ApplicationRecord
   def self.get_name_for(user_id)
     where("id = #{user_id}").pluck(:name)[0]
   end
+
+  def sort_reviews(sort_params)
+    reviews.order("rating #{sort_params[:rating]}, reviews.created_at #{sort_params[:date]}")
+  end
 end
