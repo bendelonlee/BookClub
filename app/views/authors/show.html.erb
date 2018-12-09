@@ -15,7 +15,7 @@
           <p>
             <%= book.top_review.title %>
             Rating: <%= book.top_review.rating %>
-            --<%= book.top_review.user.name %>
+            -<%= link_to(book.top_review.user.name, user_path(book.top_review.user.id), id: "user-name-#{book.top_review.user.id}")%>
           </p>
         <% end %>
       </div>
