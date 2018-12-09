@@ -1,46 +1,61 @@
 <h1><%= @book.title %></h1>
+<div class="info-container">
 <% if @authors.size == 1 %>
-  <h3>Author:</h3>
-  <h2><%= link_to(@authors.first.name, author_path(@authors.first), id: "author-#{@authors.first.id}") %></h2>
+<h5>
+  <span>Author:</span>
+  <span><%= link_to(@authors.first.name, author_path(@authors.first), id: "author-#{@authors.first.id}") %></span>
 <% else %>
-  <h3>Authors:</h3>
-  <%= @authors.each do |author| %>
-    <h2><%= link_to(author.name, author_path(author.id)) %></h2>
+  <span>Authors:</span>
+  <% @authors.each do |author| %>
+    <span><%= link_to(author.name, author_path(author.id)) %></span>
   <% end %>
 <% end %>
-<p>page count: <%= @book.page_count %></p>
-<p>publish_year: <%= @book.publish_year %></p>
+</h5>
+<p>
+  <span>page count: </span> <%= @book.page_count %>
+</p>
+<p>
+  <span>publish year: </span> <%= @book.publish_year %>
+</p>
+</div>
+
 
 <% unless @top_reviews.empty? && @bottom_reviews.empty? %>
 <section class='review-stats'>
-  <h2>Review Statistics</h2>
-    <p>Average Rating: <%= @average_review %></p>
-    <div class="top-reviews">
-      <% @top_reviews.each do |r| %>
-        <p>User: <%= r[2] %></p>
-        <p>Title: <%= r[0] %></p>
-        <p>Rating: <%= r[1] %></p>
-      <% end %>
-    </div>
-  <% unless @bottom_reviews.empty? %>
-    <div class="bottom-reviews">
-      <% @bottom_reviews.each do |r| %>
-        <p>User: <%= r[2] %></p>
-        <p>Title: <%= r[0] %></p>
-        <p>Rating: <%= r[1] %></p>
-      <% end %>
-    </div>
-  <% end %>
+   <h2>Review Statistics</h2>
+    <div class="info-container">
+
+      <div class="top-reviews">
+        <% @top_reviews.each do |r| %>
+          <p>User: <%= r[2] %></p>
+          <p>Title: <%= r[0] %></p>
+          <p>Rating: <%= r[1] %></p>
+        <% end %>
+      </div>
+    <% unless @bottom_reviews.empty? %>
+      <div class="bottom-reviews">
+        <% @bottom_reviews.each do |r| %>
+          <p>User: <%= r[2] %></p>
+          <p>Title: <%= r[0] %></p>
+          <p>Rating: <%= r[1] %></p>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 </section>
 <% end %>
 
 <h2>Reviews:</h2>
-<% @reviews.each do |review| %>
-  <p>Title: <%= review.title %></p>
-  <p>User: <%=link_to(review.user.name, user_path(review.user))%></p>
-  <p>Rating: <%= review.rating %></p>
-  <p><%= review.text %></p>
-<% end %>
-<%= button_to "Delete Book",  book_path(@book), method: :delete, data: {confirm: "Are you sure?"}  %>
+<div class="flex-container">
+  <% @reviews.each do |review| %>
+  <div class="info-container">
+    <p>Title: <%= review.title %></p>
+    <p>User: <%=link_to(review.user.name, user_path(review.user))%></p>
+    <p>Rating: <%= review.rating %></p>
+    <p><%= review.text %></p>
+  </div>
+  <% end %>
+</div>
+<%= link_to "Delete Book",  book_path(@book), {method: :delete, data: {confirm: "Are you sure?"}, class: "custom-button"}  %>
 
-<%= link_to 'Add a Review', new_book_review_path(@book.id) %> |
+<%= link_to 'Add a Review', new_book_review_path(@book.id), class: "custom-button" %>
