@@ -16,15 +16,12 @@ describe 'User Reviews Sorting' do
   end
 
   it 'should sort reviews by rating ascending and date ascending' do
-    save_and_open_page
-
     page.select("Ascending", from: "By Rating")
     page.select("Ascending", from: "By Date")
 
     click_button "Sort"
 
-    require "pry"; binding.pry
-
+    expect(current_path).to eq(user_path(@user))
   end
   xit 'should sort reviews by rating ascending and date descending' do
 
