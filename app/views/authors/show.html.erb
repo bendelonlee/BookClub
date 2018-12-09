@@ -11,7 +11,6 @@
               <p>Additional Author: <%= link_to(extra_auth.name, author_path(extra_auth)) %></p>
             <% end %>
           <% end %>
-        <% end %>
         <% if book.top_review %>
           <h6>Top Review:</h6>
           <p>
@@ -21,6 +20,5 @@
           </p>
         <% end %>
       </div>
-      <p><%= button_to "Delete Author",  author_path(@author), method: :delete, data: {confirm: "Are you sure?"}  %>
-
+      <% end %>
     <%= link_to "Delete Author",  author_path(@author), {method: :delete, data: {confirm: "Are you sure?"}, class: "custom-button"}  %>
