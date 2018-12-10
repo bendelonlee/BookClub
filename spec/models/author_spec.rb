@@ -48,7 +48,7 @@ RSpec.describe Author, type: :model do
         [a.name, a.all_books_review_average]
       end
 
-      expect(Author.top_authors(2)).to eq(top_authors)
+      expect(Author.top_authors(3)).to eq(top_authors)
     end
   end
   describe 'instance methods' do
