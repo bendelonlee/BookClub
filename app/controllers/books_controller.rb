@@ -5,6 +5,7 @@ class BooksController < ApplicationController
     @top_three = Book.rated_books(:top, 3)
     @bottom_three = Book.rated_books(:bottom, 3)
     @top_users = User.top_users_by_reviews(3)
+    @top_authors = Author.top_authors(3)
   end
 
   def show
