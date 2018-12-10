@@ -68,8 +68,8 @@ RSpec.describe Author, type: :model do
           book_2.reviews.create!(title: "#{Faker::App.name} #{Faker::Ancient.god}", rating: rand(1..5), user_id: user.id, text: Faker::RickAndMorty.quote)
 
       author_average = author.books.reduce(0) do |sum, book|
-        sum += book.reviews.average(:rating)
-      end/author.books.count
+        sum += book.reviews.sum(:rating)
+      end/author.books.joins(:reviews).count
 
       expect(author.all_books_review_average).to eq(author_average)
     end
