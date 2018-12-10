@@ -30,6 +30,7 @@ RSpec.describe 'User adds a book' do
       fill_in "book[title]", with: @book_title
       fill_in "book[page_count]", with: @page_count
       click_button "Create Book"
+      save_and_open_page
       expect(page).to have_content("Author can't be blank")
       visit books_path
       expect(page).to_not have_content(@book_title.titleize)
