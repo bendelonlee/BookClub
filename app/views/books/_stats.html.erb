@@ -18,14 +18,21 @@
       </ol>
     </div>
     <div class="info-container stats-info top_reviewers">
-      <h4>Our top reviewers</h4>
+      <h4>Our Top Reviewers</h4>
       <ol>
       <% @top_users.each do |u| %>
         <li>User: <%= link_to(u[1], user_path(u[0]), id: "user-name-#{u[0]}") %>, Total Reviews: <%= u[2] %></li>
       <% end %>
       </ol>
     </div>
-
+    <div class="info-container stats-info top_authors">
+      <h4>Our Top Authors</h4>
+      <ol>
+        <% @top_authors.each do |a| %>
+          <li>Author: <%= link_to()</li>
+        <% end %>
+      </ol>
+    </div>
   </div>
 
 </section>
