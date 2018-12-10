@@ -39,13 +39,12 @@ describe 'Top Authors on Book Index page' do
   end
 
   it 'should show top authors' do
-    
+    top_authors = Author.top_authors(3)
 
     within '.top_authors' do
-      expect(page).to have_content("Author: #{}")
-      expect(page).to have_content()
-      expect(page).to have_content()
-
+      expect(page).to have_content("Author: #{top_authors[0][0]}, Average Rating: #{top_authors[0][1]}")
+      expect(page).to have_content("Author: #{top_authors[1][0]}, Average Rating: #{top_authors[1][1]}")
+      expect(page).to have_content("Author: #{top_authors[2][0]}, Average Rating: #{top_authors[1][1]}")
     end
   end
 end
