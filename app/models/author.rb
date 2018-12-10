@@ -6,7 +6,8 @@ class Author < ApplicationRecord
   has_many :books, through: :book_authors
 
   def self.top_authors(limit)
-    Author.all.sort_by{|a| -a.all_books_review_average}[0..(limit - 1)]
+    top_authors = Author.all.sort_by{|a| -a.all_books_review_average}[0..(limit - 1)]
+
   end
 
   def titleize_name
@@ -18,5 +19,9 @@ class Author < ApplicationRecord
     books.reduce(0) do |sum, book|
       sum += book.reviews.sum(:rating)
     end/self.books.joins(:reviews).count
+  end
+
+  def no_reviews?
+    reviews.count == 0
   end
 end
