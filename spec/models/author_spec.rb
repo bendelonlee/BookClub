@@ -44,9 +44,7 @@ RSpec.describe Author, type: :model do
           book_8.reviews.create!(title: "#{Faker::App.name} #{Faker::Ancient.god}", rating: rand(1..5), user_id: user.id, text: Faker::RickAndMorty.quote)
           book_8.reviews.create!(title: "#{Faker::App.name} #{Faker::Ancient.god}", rating: rand(1..5), user_id: user.id, text: Faker::RickAndMorty.quote)
 
-      top_authors = Author.all.sort_by{|a| -a.all_books_review_average}[0..2].map do |a|
-        [a.name, a.all_books_review_average]
-      end
+      top_authors = Author.all.sort_by{|a| -a.all_books_review_average}[0..2]
 
       expect(Author.top_authors(3)).to eq(top_authors)
     end
