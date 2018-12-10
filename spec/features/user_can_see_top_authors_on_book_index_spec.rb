@@ -2,29 +2,41 @@ require "rails_helper"
 
 describe 'Top Authors on Book Index page' do
   before :each do
-    @author_1 = Author.create!(name: "Hemingway, Ernest")
-    @book_1 = @author_1.books.create!(title: "Long Day", page_count: 370, publish_year: 1998)
-    @book_2 = @author_3.books.create!(title: "Pluto Chronicoles", page_count: 372, publish_year: 1994)
-    @book_3 = @author_3.books.create!(title: "Pluto Chronicoles", page_count: 372, publish_year: 1994)
+    user = User.create!(name: Faker::Name.unique.name)
+    @author_1 = Author.create!(name: Faker::Name.unique.name)
+      @book_1 = @author_1.books.create!(title: Faker::Book.unique.title, page_count: rand(900), publish_year: rand(1975..2018))
+        @book_1.reviews.create!(title: "#{Faker::App.name} #{Faker::Ancient.god}", rating: rand(1..5), user_id: user.id, text: Faker::RickAndMorty.quote)
+        @book_1.reviews.create!(title: "#{Faker::App.name} #{Faker::Ancient.god}", rating: rand(1..5), user_id: user.id, text: Faker::RickAndMorty.quote)
+      @book_2 = @author_1.books.create!(title: Faker::Book.unique.title, page_count: rand(900), publish_year: rand(1975..2018))
+        @book_2.reviews.create!(title: "#{Faker::App.name} #{Faker::Ancient.god}", rating: rand(1..5), user_id: user.id, text: Faker::RickAndMorty.quote)
+        @book_2.reviews.create!(title: "#{Faker::App.name} #{Faker::Ancient.god}", rating: rand(1..5), user_id: user.id, text: Faker::RickAndMorty.quote)
 
-    @author_2 = Author.create!(name: "JK Rowling")
-    @book_4 = @author_2.books.create!(title: "Wizards Stone", page_count: 375, publish_year: 1999)
-    @book_5 = @author_3.books.create!(title: "Pluto Chronicoles", page_count: 372, publish_year: 1994)
-    @book_6 = @author_3.books.create!(title: "Pluto Chronicoles", page_count: 372, publish_year: 1994)
+    @author_2 = Author.create!(name: Faker::Name.unique.name)
+      @book_3 = @author_2.books.create!(title: Faker::Book.unique.title, page_count: rand(900), publish_year: rand(1975..2018))
+        @book_3.reviews.create!(title: "#{Faker::App.name} #{Faker::Ancient.god}", rating: rand(1..5), user_id: user.id, text: Faker::RickAndMorty.quote)
+        @book_3.reviews.create!(title: "#{Faker::App.name} #{Faker::Ancient.god}", rating: rand(1..5), user_id: user.id, text: Faker::RickAndMorty.quote)
+      @book_4 = @author_2.books.create!(title: Faker::Book.unique.title, page_count: rand(900), publish_year: rand(1975..2018))
+        @book_4.reviews.create!(title: "#{Faker::App.name} #{Faker::Ancient.god}", rating: rand(1..5), user_id: user.id, text: Faker::RickAndMorty.quote)
+        @book_4.reviews.create!(title: "#{Faker::App.name} #{Faker::Ancient.god}", rating: rand(1..5), user_id: user.id, text: Faker::RickAndMorty.quote)
 
-    @author_3 = Author.create!(name: "Bradbury, Ray")
-    @book_7 = @author_3.books.create!(title: "Pluto Chronicoles", page_count: 372, publish_year: 1994)
-    @book_8 = @author_3.books.create!(title: "Pluto Chronicoles", page_count: 372, publish_year: 1994)
-    @book_9 = @author_3.books.create!(title: "Pluto Chronicoles", page_count: 372, publish_year: 1994)
+    @author_3 = Author.create!(name: Faker::Name.unique.name)
+      @book_5 = @author_3.books.create!(title: Faker::Book.unique.title, page_count: rand(900), publish_year: rand(1975..2018))
+        @book_5.reviews.create!(title: "#{Faker::App.name} #{Faker::Ancient.god}", rating: rand(1..5), user_id: user.id, text: Faker::RickAndMorty.quote)
+        @book_5.reviews.create!(title: "#{Faker::App.name} #{Faker::Ancient.god}", rating: rand(1..5), user_id: user.id, text: Faker::RickAndMorty.quote)
+      @book_6 = @author_3.books.create!(title: Faker::Book.unique.title, page_count: rand(900), publish_year: rand(1975..2018))
+        @book_6.reviews.create!(title: "#{Faker::App.name} #{Faker::Ancient.god}", rating: rand(1..5), user_id: user.id, text: Faker::RickAndMorty.quote)
+        @book_6.reviews.create!(title: "#{Faker::App.name} #{Faker::Ancient.god}", rating: rand(1..5), user_id: user.id, text: Faker::RickAndMorty.quote)
 
-    @author_4 = Author.create!(name: "Bradbury, Ray")
-    @book_10 = @author_4.books.create!(title: "Pluto Chronicoles", page_count: 372, publish_year: 1994)
-    @book_11 = @author_4.books.create!(title: "Pluto Chronicoles", page_count: 372, publish_year: 1994)
-    @book_12 = @author_4.books.create!(title: "Pluto Chronicoles", page_count: 372, publish_year: 1994)
-
+    @author_4 = Author.create!(name: Faker::Name.unique.name)
+      @book_7 = @author_4.books.create!(title: Faker::Book.unique.title, page_count: rand(900), publish_year: rand(1975..2018))
+        @book_7.reviews.create!(title: "#{Faker::App.name} #{Faker::Ancient.god}", rating: rand(1..5), user_id: user.id, text: Faker::RickAndMorty.quote)
+        @book_7.reviews.create!(title: "#{Faker::App.name} #{Faker::Ancient.god}", rating: rand(1..5), user_id: user.id, text: Faker::RickAndMorty.quote)
+      @book_8 = @author_4.books.create!(title: Faker::Book.unique.title, page_count: rand(900), publish_year: rand(1975..2018))
+        @book_8.reviews.create!(title: "#{Faker::App.name} #{Faker::Ancient.god}", rating: rand(1..5), user_id: user.id, text: Faker::RickAndMorty.quote)
+        @book_8.reviews.create!(title: "#{Faker::App.name} #{Faker::Ancient.god}", rating: rand(1..5), user_id: user.id, text: Faker::RickAndMorty.quote)
   end
 
   it 'should show top authors' do
-
+    require "pry"; binding.pry
   end
 end
