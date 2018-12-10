@@ -47,8 +47,8 @@ RSpec.describe Author, type: :model do
       top_authors = Author.all.sort_by{|a| -a.all_books_review_average}[0..2].map do |a|
         [a.name, a.all_books_review_average]
       end
-      
-      expect(Author.top_authors(3)).to eq(top_authors)
+
+      expect(Author.top_authors(2)).to eq(top_authors)
     end
   end
   describe 'instance methods' do
