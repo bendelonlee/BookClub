@@ -16,8 +16,8 @@ describe 'User Reviews Sorting' do
   end
 
   it 'should sort reviews by rating ascending and date ascending' do
-    page.select("Ascending", from: "By Rating")
-    page.select("Ascending", from: "By Date")
+    page.select("ascending", from: "rating[direction]")
+    page.select("ascending", from: "date[direction]")
 
     click_button "Sort"
 
@@ -30,8 +30,8 @@ describe 'User Reviews Sorting' do
     expect(all('.review')[5]).to have_content(sorted[5].title, sorted[5].text)
   end
   it 'should sort reviews by rating ascending and date descending' do
-    page.select("Ascending", from: "By Rating")
-    page.select("Descending", from: "By Date")
+    page.select("ascending", from: "rating[direction]")
+    page.select("descending", from: "date[direction]")
 
     click_button "Sort"
 
@@ -44,8 +44,8 @@ describe 'User Reviews Sorting' do
     expect(all('.review')[5]).to have_content(sorted[5].title, sorted[5].text)
   end
   it 'should sort reviews by rating descending and date ascending' do
-    page.select("Descending", from: "By Rating")
-    page.select("Ascending", from: "By Date")
+    page.select("descending", from: "rating[direction]")
+    page.select("ascending", from: "date[direction]")
 
     click_button "Sort"
 
@@ -58,8 +58,8 @@ describe 'User Reviews Sorting' do
     expect(all('.review')[5]).to have_content(sorted[5].title, sorted[5].text)
   end
   it 'should sort reviews by rating descending and date descending' do
-    page.select("Descending", from: "By Rating")
-    page.select("Descending", from: "By Date")
+    page.select("descending", from: "rating[direction]")
+    page.select("descending", from: "date[direction]")
 
     click_button "Sort"
 

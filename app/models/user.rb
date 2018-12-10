@@ -17,6 +17,6 @@ class User < ApplicationRecord
   end
 
   def sort_reviews(sort_params)
-    reviews.order("rating #{sort_params[:rating]}, reviews.created_at #{sort_params[:date]}")
+    reviews.order("rating #{sort_params['rating']}, reviews.created_at #{sort_params['date']}")
   end
 end

@@ -1,3 +1,22 @@
+<%= form_tag("/users/#{@user_id}", method: :get) do |f| %>
+  <p>Sort by</p>
+  <div>
+    <%= label_tag('Rating:') %>
+    <%= select('rating', 'direction', %w[ascending descending])  %>
+  </div>
+  <div>
+    <%= label_tag('Date:') %>
+    <%= select('date', 'direction', %w[ascending descending])  %>
+  </div>
+  <div>
+    <%= submit_tag("") %>
+  </div>
+
+<% end %>
+
+
+
+
 <form class="flex-form" action="/users/<%= @user_id %>" method="GET">
   <p>Sort Reviews: </p>
   <label for="review-sort-rating">By Rating</label>
