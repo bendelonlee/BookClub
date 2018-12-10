@@ -29,14 +29,7 @@ class BooksController < ApplicationController
     if @book.save
       created_authors = create_authors
       created_authors.each do |author|
-        if author.id
-          BookAuthor.create!(author_id: author.id, book_id: @book.id)
-        else
-          existing_author = Author.find_by(name: author.name)
-          if existing_author
-            @book_author = BookAuthor.create!(author_id: existing_author.id, book_id: @book.id)
-          end
-        end
+        @book_author = BookAuthor.create!(author_id: author.id, book_id: @book.id)
       end
       if created_authors == []
         @book.errors.add(:author, "can't be blank")
@@ -80,7 +73,7 @@ class BooksController < ApplicationController
     author_names = author_params[:authors]
     author_names = author_names.split(", ")
     author_names.map do |name|
-      Author.create(name: name.titleize)
+      Author.find_or_create_by(name: name.titleize)
     end
   end
 end

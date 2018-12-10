@@ -76,30 +76,40 @@ RSpec.describe Book, type: :model do
  end
 
  describe 'class methods' do
+   before(:each) do
+     @book_1 = Book.create!(title: "Harry Potter 1", page_count: 300, publish_year: 2007 )
+     @book_2 = Book.create!(title: "Harry Potter 2", page_count: 300, publish_year: 2007 )
+     @book_3 = Book.create!(title: "Harry Potter 3", page_count: 300, publish_year: 2007 )
+     @book_4 = Book.create!(title: "Harry Potter 4", page_count: 300, publish_year: 2007 )
+     @book_5 = Book.create!(title: "Harry Potter 5", page_count: 300, publish_year: 2007 )
+     @book_6 = Book.create!(title: "Harry Potter 6", page_count: 300, publish_year: 2007 )
+
+     @user_1 = User.create!(name: "magicfan1")
+     @user_2 = User.create!(name: "magicfan2")
+
+     @sorted_books_desc = [@book_3, @book_1, @book_2, @book_6, @book_4, @book_5]
+
+     @review_1 = Review.create!(book: @sorted_books_desc[0], user: @user_1, rating: 5, title: "It was a book",  text: "It's really hard to describe, you know?" )
+     @review_2 = Review.create!(book: @sorted_books_desc[1], user: @user_1, rating: 5, title: "It was a book",  text: "It's really hard to describe, you know?" )
+     @review_3 = Review.create!(book: @sorted_books_desc[2], user: @user_1, rating: 4, title: "It was a book",  text: "It's really hard to describe, you know?" )
+     @review_4 = Review.create!(book: @sorted_books_desc[3], user: @user_1, rating: 3, title: "It was a book",  text: "It's really hard to describe, you know?" )
+     @review_5 = Review.create!(book: @sorted_books_desc[4], user: @user_1, rating: 2, title: "It was a book",  text: "It's really hard to describe, you know?" )
+     @review_6 = Review.create!(book: @sorted_books_desc[5], user: @user_1, rating: 1, title: "It was a book",  text: "It's really hard to describe, you know?" )
+
+     @review_7 = Review.create!(book: @book_1, user: @user_2, rating: 4, title: "It was a book",  text: "It's really hard to describe, you know?" )
+
+   end
+
+   describe '.ordered_by_rating' do
+     it 'returns them descending' do
+       expect(Book.ordered_by_rating("desc")).to eq(@sorted_books_desc)
+     end
+     it 'returns them ascending' do
+       expect(Book.ordered_by_rating("asc")).to eq(@sorted_books_desc.reverse)
+     end
+   end
 
    describe '.rated_books' do
-     before(:each) do
-       @book_1 = Book.create!(title: "Harry Potter 1", page_count: 300, publish_year: 2007 )
-       @book_2 = Book.create!(title: "Harry Potter 2", page_count: 300, publish_year: 2007 )
-       @book_3 = Book.create!(title: "Harry Potter 3", page_count: 300, publish_year: 2007 )
-       @book_4 = Book.create!(title: "Harry Potter 4", page_count: 300, publish_year: 2007 )
-       @book_5 = Book.create!(title: "Harry Potter 5", page_count: 300, publish_year: 2007 )
-       @book_6 = Book.create!(title: "Harry Potter 6", page_count: 300, publish_year: 2007 )
-
-       @user_1 = User.create!(name: "magicfan1")
-       @user_2 = User.create!(name: "magicfan2")
-
-       @sorted_books_desc = [@book_3, @book_1, @book_2, @book_6, @book_4, @book_5]
-
-       @review_1 = Review.create!(book: @book_3, user: @user_1, rating: 5, title: "It was a book",  text: "It's really hard to describe, you know?" )
-       @review_2 = Review.create!(book: @book_1, user: @user_1, rating: 5, title: "It was a book",  text: "It's really hard to describe, you know?" )
-       @review_3 = Review.create!(book: @book_2, user: @user_1, rating: 4, title: "It was a book",  text: "It's really hard to describe, you know?" )
-       @review_4 = Review.create!(book: @book_6, user: @user_1, rating: 3, title: "It was a book",  text: "It's really hard to describe, you know?" )
-       @review_5 = Review.create!(book: @book_4, user: @user_1, rating: 2, title: "It was a book",  text: "It's really hard to describe, you know?" )
-       @review_6 = Review.create!(book: @book_5, user: @user_1, rating: 1, title: "It was a book",  text: "It's really hard to describe, you know?" )
-
-       @review_7 = Review.create!(book: @book_1, user: @user_2, rating: 4, title: "It was a book",  text: "It's really hard to describe, you know?" )
-     end
      it 'returns top three descending' do
        expected = [
          [@sorted_books_desc[0].title, 5],
