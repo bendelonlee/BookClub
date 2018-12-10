@@ -66,9 +66,9 @@ RSpec.describe Book, type: :model do
       end
       it 'returns bottom three ascending' do
         expected = [
-          [@review_2.title, @review_2.rating, @user_2.name],
+          [@review_3.title, @review_3.rating, @user_3.name],
           [@review_4.title, @review_4.rating, @user_4.name],
-          [@review_3.title, @review_3.rating, @user_3.name]
+          [@review_2.title, @review_2.rating, @user_2.name]
         ]
         expect(@book_1.get_reviews(:bottom, 3)).to eq(expected)
       end
