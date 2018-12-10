@@ -14,6 +14,7 @@ class Author < ApplicationRecord
   end
 
   def all_books_review_average
+    return 0 if books.joins(:reviews).count == 0
     books.reduce(0) do |sum, book|
       sum += book.reviews.sum(:rating)
     end/self.books.joins(:reviews).count
