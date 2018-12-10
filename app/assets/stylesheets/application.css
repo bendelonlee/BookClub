@@ -9,16 +9,19 @@ nav {
   background-color: whitesmoke;
   position: fixed;
   top: 0;
-  width: 100%;
+  width: 785px;
   z-index: 100;
   display: flex;
-  justify-content: flex-end;
   height: 40px;
   border-width: medium;
-  border-style: outset; }
+  border-style: outset;
+  justify-content: center;
+  right: 0; }
   nav a {
     color: teal;
     text-decoration: none; }
+  nav a:hover {
+    color: black; }
 
 .link-container {
   padding: 12px;
@@ -51,7 +54,7 @@ body {
   overflow: auto;
   top: 0px;
   left: 0px;
-  background: rgba(0, 0, 0, 0.5); }
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0)); }
 
 main {
   padding: 20px;
@@ -64,12 +67,15 @@ main {
   background-color: rgba(30, 30, 30, 0.5); }
 
 h1 {
-  font-family: 'Mr De Haviland', cursive;
-  font-size: 200px;
-  text-align: center; }
+  font-variant: small-caps;
+  font-size: 80px;
+  text-align: center;
+  margin: 30px;
+  margin-bottom: 50px; }
 
 h2 {
-  font-size: 61px;
+  font-family: 'Mr De Haviland', cursive;
+  font-size: 40px;
   text-align: center;
   margin: 5px;
   margin-bottom: 25px; }
@@ -94,7 +100,6 @@ ol {
 .flex-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
   margin-bottom: 40px; }
 
 .info-container {
@@ -103,19 +108,25 @@ ol {
   background: rgba(0, 0, 0, 0.5);
   border-radius: 10px;
   padding: 7px;
-  width: 155px; }
+  width: 155px;
+  overflow: scroll;
+  max-height: 250px; }
   .info-container h4 {
     font-size: 18px;
     margin-bottom: 5px;
-    text-align: center; }
+    text-align: center;
+    font-variant: small-caps; }
   .info-container .data-label {
-    font-size: 10px; }
+    font-size: 13px; }
   .info-container .datum {
-    font-size: 12px; }
+    font-size: 14px;
+    font-weight: bolder; }
 
 .sort-sidebar {
   margin-top: 50px;
-  width: 211px; }
+  width: 211px;
+  position: fixed;
+  right: 800px; }
   .sort-sidebar .sort-link {
     margin: 5px;
     padding: 5px; }
