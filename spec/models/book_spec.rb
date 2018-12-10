@@ -57,19 +57,13 @@ RSpec.describe Book, type: :model do
 
       end
       it 'returns top three descending' do
-        expected = [
-          [@review_6.title, @review_6.rating, @user_6.name],
-          [@review_1.title, @review_1.rating, @user_1.name],
-          [@review_5.title, @review_5.rating, @user_5.name]
-        ]
+        expected = [@review_6,@review_1,@review_5]
+
         expect(@book_1.get_reviews(:top, 3)).to eq(expected)
       end
       it 'returns bottom three ascending' do
-        expected = [
-          [@review_3.title, @review_3.rating, @user_3.name],
-          [@review_4.title, @review_4.rating, @user_4.name],
-          [@review_2.title, @review_2.rating, @user_2.name]
-        ]
+        expected = [@review_3,@review_4,@review_2]
+        
         expect(@book_1.get_reviews(:bottom, 3)).to eq(expected)
       end
     end
