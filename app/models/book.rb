@@ -35,7 +35,7 @@ class Book < ApplicationRecord
 
   def get_reviews(top_or_bottom, number_of)
     order = top_or_bottom == :top ? "DESC" : "ASC"
-    self.reviews.order("rating #{order}").limit(number_of)
+    reviews.order("rating #{order}").limit(number_of)
   end
 
   def top_review
