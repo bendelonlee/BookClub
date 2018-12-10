@@ -6,9 +6,7 @@ class Author < ApplicationRecord
   has_many :books, through: :book_authors
 
   def self.top_authors(limit)
-    Author.all.sort_by{|a| -a.all_books_review_average}[0..(limit - 1)].map do |a|
-      [a.name, a.all_books_review_average]
-    end
+    Author.all.sort_by{|a| -a.all_books_review_average}[0..(limit - 1)]
   end
 
   def titleize_name
