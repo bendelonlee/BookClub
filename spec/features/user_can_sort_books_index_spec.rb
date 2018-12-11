@@ -53,7 +53,7 @@ describe "Book Index Sorting" do
     @book_14 = Book.create!(title: Faker::Book.unique.title, page_count: rand(900), publish_year: rand(1950..2018))
     @author_3.books += [@book_9,@book_10,@book_11,@book_12,@book_13,@book_14]
   end
-  
+
   it 'should have link to sort by average rating in ascending order' do
     visit books_path
 

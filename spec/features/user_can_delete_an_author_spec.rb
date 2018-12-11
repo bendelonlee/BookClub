@@ -1,4 +1,4 @@
-!require "rails_helper"
+require "rails_helper"
 
 describe 'User navigates to Author Show Page' do
   before(:each) do
@@ -7,6 +7,7 @@ describe 'User navigates to Author Show Page' do
     @author_2 = @book.authors.create!(name: "Clive Lovehart")
     visit author_path(@author_1)
   end
+
   context 'when they click on a delete link or button' do
     before(:each) do
       click_on "Delete Author"
