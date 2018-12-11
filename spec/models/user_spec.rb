@@ -27,15 +27,9 @@ RSpec.describe User, type: :model do
       book_1.reviews.create!(title: "Boo, mediocore.", rating: 2, user_id: user_1.id, text: "This book took too long to read! It was bad!")
       book_1.reviews.create!(title: "Boo, crappy.", rating: 2, user_id: user_3.id, text: "This book took too long to read! It was bad!")
 
-      expect(User.top_users_by_reviews).to eq([
-        [user_2.id, user_2.name, user_2.reviews.count],
-        [user_1.id, user_1.name, user_1.reviews.count],
-        [user_3.id, user_3.name, user_3.reviews.count]
-        ])
-      expect(User.top_users_by_reviews(2)).to eq([
-        [user_2.id, user_2.name, user_2.reviews.count],
-        [user_1.id, user_1.name, user_1.reviews.count]
-        ])
+      expect(User.top_users_by_reviews).to eq([user_2,user_1,user_3])
+
+      expect(User.top_users_by_reviews(2)).to eq([user_2,user_1])
     end
     describe '.sort_reviews' do
       before :each do
