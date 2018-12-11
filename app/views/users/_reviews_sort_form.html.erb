@@ -1,13 +1,3 @@
-<%= form_tag("/users/#{@user.id}", method: :get) do -%>
-  <%= select_tag "credit_card", options_for_select([ "VISA", "MasterCard" ]) %>
-# => <select id="credit_card" name="credit_card"><option>VISA</option>
-#    <option selected="selected">MasterCard</option></select>
-<% end -%>
-
-<%= form_for() %>
-  <%= f.select() %>
-<% end %>
-
 <form class="flex-form" action="/users/<%= @user_id %>" method="GET">
   <p>Sort Reviews: </p>
   <label for="review-sort-rating">By Rating</label>
