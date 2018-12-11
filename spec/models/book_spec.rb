@@ -115,5 +115,34 @@ RSpec.describe Book, type: :model do
        expect(Book.rated_books(:bottom, 3)).to eq(expected)
      end
    end
+   describe '.ordered_by_reviews' do
+     before(:each) do
+       for i in 1..6
+         Review.create!(book: @book_1, user: @user_2, rating: 4, title: "It was a book",  text: "It's really hard to describe, you know?" )
+       end
+       for i in 1..5
+         Review.create!(book: @book_3, user: @user_2, rating: 4, title: "It was a book",  text: "It's really hard to describe, you know?" )
+       end
+       for i in 1..4
+         Review.create!(book: @book_5, user: @user_2, rating: 4, title: "It was a book",  text: "It's really hard to describe, you know?" )
+       end
+       for i in 1..3
+         Review.create!(book: @book_4, user: @user_2, rating: 4, title: "It was a book",  text: "It's really hard to describe, you know?" )
+       end
+       for i in 1..2
+         Review.create!(book: @book_2, user: @user_2, rating: 4, title: "It was a book",  text: "It's really hard to describe, you know?" )
+       end
+       @books_by_review_count_desc = [@book_1, @book_3, @book_5, @book_4, @book_2, @book_6]
+     end
+     it 'sorts by review count descending' do
+       expected = @books_by_review_count_desc
+       expect(Book.ordered_by_reviews('desc')).to eq(expected)
+     end
+     it 'sorts by review count ascending' do
+       expected = @books_by_review_count_desc.reverse
+       expect(Book.ordered_by_reviews('asc')).to eq(expected)
+     end
+
+   end
  end
 end
