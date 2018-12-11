@@ -5,7 +5,7 @@
       <h4>Top Books</h4>
       <ol>
       <% @top_three.each do |b| %>
-        <li>Book: <%= b[0] %>, Average Rating: <%= b[1] %></li>
+        <li>Book: <%= b[0] %>, Average Rating: <%= b[1].round(2) %></li>
       <% end %>
       </ol>
     </div>
@@ -13,7 +13,7 @@
       <h4>Bottom Books</h4>
       <ol>
       <% @bottom_three.each do |b| %>
-        <li>Book: <%= b[0] %>, Average Rating: <%= b[1] %></li>
+        <li>Book: <%= b[0] %>, Average Rating: <%= b[1].round(2) %></li>
       <% end %>
       </ol>
     </div>
