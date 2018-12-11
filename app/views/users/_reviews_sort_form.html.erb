@@ -2,7 +2,7 @@
   <p>Sort by</p>
   <div id= "sort-by-rating">
     <%= label_tag('Rating:') %>
-    <%= select('rating', 'direction', %w[asc desc])  %>
+    <%= select('review_sort[rating]', 'direction', %w[asc desc])  %>
     <%= submit_tag("Sort") %>
   </div>
 

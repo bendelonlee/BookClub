@@ -5,19 +5,21 @@ describe 'User Reviews Sorting' do
     @user = User.create!(name: Faker::Name.unique.name)
 
     @book = Book.create!(title: Faker::Book.unique.title, page_count: rand(900), publish_year: rand(1950..2018))
-    @review_1 = @book.reviews.create!(title: "#{Faker::App.name} #{Faker::Ancient.god}", rating: rand(1..5), user_id: @user.id, text: Faker::RickAndMorty.quote)
-    @review_2 = @book.reviews.create!(title: "#{Faker::App.name} #{Faker::Ancient.god}", rating: rand(1..5), user_id: @user.id, text: Faker::RickAndMorty.quote)
-    @review_3 = @book.reviews.create!(title: "#{Faker::App.name} #{Faker::Ancient.god}", rating: rand(1..5), user_id: @user.id, text: Faker::RickAndMorty.quote)
-    @review_4 = @book.reviews.create!(title: "#{Faker::App.name} #{Faker::Ancient.god}", rating: rand(1..5), user_id: @user.id, text: Faker::RickAndMorty.quote)
-    @review_5 = @book.reviews.create!(title: "#{Faker::App.name} #{Faker::Ancient.god}", rating: rand(1..5), user_id: @user.id, text: Faker::RickAndMorty.quote)
-    @review_6 = @book.reviews.create!(title: "#{Faker::App.name} #{Faker::Ancient.god}", rating: rand(1..5), user_id: @user.id, text: Faker::RickAndMorty.quote)
+    @review_1 = @book.reviews.create!(title: "review 1 #{Faker::Ancient.god}", rating: rand(1..5), user_id: @user.id, text: Faker::RickAndMorty.quote)
+    @review_2 = @book.reviews.create!(title: "review 2 #{Faker::Ancient.god}", rating: rand(1..5), user_id: @user.id, text: Faker::RickAndMorty.quote)
+    @review_3 = @book.reviews.create!(title: "review 3 #{Faker::Ancient.god}", rating: rand(1..5), user_id: @user.id, text: Faker::RickAndMorty.quote)
+    @review_4 = @book.reviews.create!(title: "review 4 #{Faker::Ancient.god}", rating: rand(1..5), user_id: @user.id, text: Faker::RickAndMorty.quote)
+    @review_5 = @book.reviews.create!(title: "review 5 #{Faker::Ancient.god}", rating: rand(1..5), user_id: @user.id, text: Faker::RickAndMorty.quote)
+    @review_6 = @book.reviews.create!(title: "review 6 #{Faker::Ancient.god}", rating: rand(1..5), user_id: @user.id, text: Faker::RickAndMorty.quote)
 
     visit user_path(@user)
   end
 
   it 'should sort reviews by rating ascending (date ascending)' do
+    save_and_open_page
+
     within "#sort-by-rating" do
-      page.select("asc", from: "rating[direction]")
+      page.select("asc", from: "review_sort[rating][direction]")
       click_button "Sort"
     end
 
