@@ -3,7 +3,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user_id = params[:id]
     @reviews = @user.sort_reviews(params['review_sort']) if params[:review_sort]
-    require 'pry'; binding.pry
     @reviews = @user.reviews unless @reviews
   end
 

@@ -16,7 +16,6 @@ describe 'User Reviews Sorting' do
   end
 
   it 'should sort reviews by rating ascending (date ascending)' do
-    save_and_open_page
 
     within "#sort-by-rating" do
       page.select("asc", from: "review_sort[rating][direction]")
@@ -33,11 +32,9 @@ describe 'User Reviews Sorting' do
   end
   it 'should sort reviews by rating descending (date descending)' do
     within "#sort-by-rating" do
-      page.select("desc", from: "rating[direction]")
+      page.select("desc", from: "review_sort[rating][direction]")
       click_button "Sort"
     end
-
-    click_button "Sort"
 
     sorted = @user.reviews.order("rating desc, reviews.created_at desc")
     expect(all('.review')[0]).to have_content(sorted[0].title, sorted[0].text)
