@@ -11,7 +11,7 @@ describe "Navigating to book show from clicking book name" do
   it 'should link from books index' do
     visit books_path
 
-    click_link "book-title-#{@book.id}"
+    first(:link, "book-title-#{@book.id}").click
 
     expect(current_path).to eq(book_path(@book))
   end
@@ -19,7 +19,7 @@ describe "Navigating to book show from clicking book name" do
   it 'should link from author show page' do
     visit author_path(@author)
 
-    click_link "book-title-#{@book.id}"
+    first(:link, "book-title-#{@book.id}").click
 
     expect(current_path).to eq(book_path(@book))
   end
@@ -27,7 +27,7 @@ describe "Navigating to book show from clicking book name" do
   it 'should link from a user review of book' do
     visit user_path(@user)
 
-    click_link "book-title-#{@book.id}"
+    first(:link, "book-title-#{@book.id}").click
 
     expect(current_path).to eq(book_path(@book))
   end

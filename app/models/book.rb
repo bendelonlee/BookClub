@@ -15,31 +15,26 @@ class Book < ApplicationRecord
   def self.rated_books(top_or_bottom, number = nil)
     order = top_or_bottom == :top ? "DESC" : "ASC"
     joins(:reviews)
-      .group("books.id", "books.title")
+      .group("books.id")
       .order("AVG(reviews.rating) #{order}")
       .limit(number)
-      .pluck("books.title", "AVG(reviews.rating)")
   end
 
   def self.ordered_by_rating(asc_or_desc)
     joins(:reviews)
-      .group("books.id", "books.title")
+      .group("books.id")
       .order("AVG(reviews.rating) #{asc_or_desc}")
   end
 
   def self.ordered_by_reviews(asc_or_desc)
     joins(:reviews)
-      .group("books.id", "books.title")
+      .group("books.id")
       .order("COUNT(reviews.id) #{asc_or_desc}")
   end
 
   def get_reviews(top_or_bottom, number_of)
     order = top_or_bottom == :top ? "DESC" : "ASC"
-    reviews_with_ids = self.reviews.order("rating #{order}").limit(number_of).pluck(:title, :rating, :user_id)
-    #Could work on making more activerecord-y
-    reviews_with_ids.map do |r|
-      r[-1] = User.get_name_for(r[-1]); r
-    end
+    reviews.order("rating #{order}").limit(number_of)
   end
 
   def top_review

@@ -34,9 +34,17 @@ describe 'Top Authors on Book Index page' do
       @book_8 = @author_4.books.create!(title: Faker::Book.unique.title, page_count: rand(900), publish_year: rand(1975..2018))
         @book_8.reviews.create!(title: "#{Faker::App.name} #{Faker::Ancient.god}", rating: rand(1..5), user_id: user.id, text: Faker::RickAndMorty.quote)
         @book_8.reviews.create!(title: "#{Faker::App.name} #{Faker::Ancient.god}", rating: rand(1..5), user_id: user.id, text: Faker::RickAndMorty.quote)
+
+    visit books_path
   end
 
   it 'should show top authors' do
-    require "pry"; binding.pry
+    top_authors = Author.top_authors(3)
+
+    within '.top_authors' do
+      expect(page).to have_content("Author: #{top_authors[0].name}, Average Rating: #{top_authors[0].books.joins(:reviews).average(:rating)}")
+      expect(page).to have_content("Author: #{top_authors[1].name}, Average Rating: #{top_authors[1].books.joins(:reviews).average(:rating)}")
+      expect(page).to have_content("Author: #{top_authors[2].name}, Average Rating: #{top_authors[2].books.joins(:reviews).average(:rating)}")
+    end
   end
 end
