@@ -1,13 +1,21 @@
+<p>Sort by</p>
 <%= form_tag("/users/#{@user_id}", method: :get) do |f| %>
-  <p>Sort by</p>
   <div id= "sort-by-rating">
     <%= label_tag('Rating:') %>
     <%= select('review_sort[rating]', 'direction', %w[asc desc])  %>
     <%= submit_tag("Sort") %>
   </div>
-
-
 <% end %>
+<%= form_tag("/users/#{@user_id}", method: :get) do |f| %>
+  <div id= "sort-by-date">
+    <%= label_tag('Date:') %>
+    <%= select('review_sort[date]', 'direction', %w[asc desc])  %>
+    <%= submit_tag("Sort") %>
+  </div>
+<% end %>
+
+
+
 
 
 

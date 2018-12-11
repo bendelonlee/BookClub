@@ -45,4 +45,35 @@ describe 'User Reviews Sorting' do
     expect(all('.review')[5]).to have_content(sorted[5].title, sorted[5].text)
   end
 
+
+  it 'should sort reviews by date descending' do
+    within "#sort-by-date" do
+      page.select("desc", from: "review_sort[date][direction]")
+      click_button "Sort"
+    end
+
+    sorted = @user.reviews.order("created_at desc")
+    expect(all('.review')[0]).to have_content(sorted[0].title, sorted[0].text)
+    expect(all('.review')[1]).to have_content(sorted[1].title, sorted[1].text)
+    expect(all('.review')[2]).to have_content(sorted[2].title, sorted[2].text)
+    expect(all('.review')[3]).to have_content(sorted[3].title, sorted[3].text)
+    expect(all('.review')[4]).to have_content(sorted[4].title, sorted[4].text)
+    expect(all('.review')[5]).to have_content(sorted[5].title, sorted[5].text)
+  end
+
+  it 'should sort reviews by date ascending' do
+    within "#sort-by-date" do
+      page.select("asc", from: "review_sort[date][direction]")
+      click_button "Sort"
+    end
+
+    sorted = @user.reviews.order("created_at asc")
+    expect(all('.review')[0]).to have_content(sorted[0].title, sorted[0].text)
+    expect(all('.review')[1]).to have_content(sorted[1].title, sorted[1].text)
+    expect(all('.review')[2]).to have_content(sorted[2].title, sorted[2].text)
+    expect(all('.review')[3]).to have_content(sorted[3].title, sorted[3].text)
+    expect(all('.review')[4]).to have_content(sorted[4].title, sorted[4].text)
+    expect(all('.review')[5]).to have_content(sorted[5].title, sorted[5].text)
+  end
+
 end

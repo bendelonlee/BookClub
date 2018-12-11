@@ -18,10 +18,10 @@ class User < ApplicationRecord
 
   def sort_reviews(sort_params)
     if sort_params[:rating]
-      rating_dir = sort_params[:rating][:direction]
-      date_dir = rating_dir
-      reviews.order("rating #{rating_dir}, reviews.created_at #{date_dir}")
+      direction = sort_params[:rating][:direction]
+      reviews.order("rating #{direction}, reviews.created_at #{direction}")
     elsif sort_params[:date]
+      reviews.order("reviews.created_at #{sort_params[:date][:direction]}")
     end
   end
 end
