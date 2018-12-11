@@ -42,30 +42,34 @@ RSpec.describe User, type: :model do
         @rev_4 = @book_1.reviews.create!(title: "Boo, mediocore.", rating: 2, user_id: @user.id, text: "This book took too long to read! It was bad!", created_at: 4.days.ago)
         @rev_5 = @book_1.reviews.create!(title: "Boo, crappy.", rating: 2, user_id: @user.id, text: "This book took too long to read! It was bad!", created_at: 5.days.ago)
       end
-      it 'should sort reviews by rating ascending and date ascending' do
-        sort_params = {rating: "asc", date: "asc"}
+
+      it 'should sort reviews by rating ascending (date ascending)' do
+        sort_params = {rating: {direction: "asc"}}
         sorted = @user.sort_reviews(sort_params)
 
         expect(sorted).to eq(@user.reviews.order("rating asc, reviews.created_at asc"))
       end
-      it 'should sort reviews by rating ascending and date descending' do
-        sort_params = {rating: "asc", date: "desc"}
-        sorted = @user.sort_reviews(sort_params)
-
-        expect(sorted).to eq(@user.reviews.order("rating asc, reviews.created_at desc"))
-      end
-      it 'should sort reviews by rating descending and date ascending' do
-        sort_params = {rating: "desc", date: "asc"}
-        sorted = @user.sort_reviews(sort_params)
-
-        expect(sorted).to eq(@user.reviews.order("rating desc, reviews.created_at asc"))
-      end
-      it 'should sort reviews by rating descending and date descending' do
-        sort_params = {rating: "desc", date: "desc"}
+      it 'should sort reviews by rating descending (date descending)' do
+        sort_params = {rating: {direction: "desc"}}
         sorted = @user.sort_reviews(sort_params)
 
         expect(sorted).to eq(@user.reviews.order("rating desc, reviews.created_at desc"))
       end
+
+      it 'should sort reviews by date descending' do
+        sort_params = {date: {direction: "desc"}}
+        sorted = @user.sort_reviews(sort_params)
+
+        expect(sorted).to eq(@user.reviews.order("reviews.created_at desc"))
+      end
+
+      it 'should sort reviews by date ascending' do
+        sort_params = {date: {direction: "asc"}}
+        sorted = @user.sort_reviews(sort_params)
+
+        expect(sorted).to eq(@user.reviews.order("reviews.created_at asc"))
+      end
+
   end
 
 

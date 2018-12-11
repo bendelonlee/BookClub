@@ -1,14 +1,15 @@
-<form class="flex-form" action="/users/<%= @user_id %>" method="GET">
-  <p>Sort Reviews: </p>
-  <label for="review-sort-rating">By Rating</label>
-  <select id='review-sort-rating' name="review_sort[rating]">
-    <option id='rating-asc' value="asc">Ascending</option>
-    <option id='rating-desc' value="desc">Descending</option>
-  </select>
-  <label for="review-sort-date">By Date</label>
-  <select id='review-sort-date' name="review_sort[date]">
-    <option id='date-asc' value="asc">Ascending</option>
-    <option id='date-desc' value="desc">Descending</option>
-  </select>
-  <input type="submit" name="sort-user-reviews" value="Sort">
-</form>
+<p>Sort by</p>
+<%= form_tag("/users/#{@user_id}", method: :get) do |f| %>
+  <div id= "sort-by-rating">
+    <%= label_tag('Rating:') %>
+    <%= select('review_sort[rating]', 'direction', %w[asc desc])  %>
+    <%= submit_tag("Sort") %>
+  </div>
+<% end %>
+<%= form_tag("/users/#{@user_id}", method: :get) do |f| %>
+  <div id= "sort-by-date">
+    <%= label_tag('Date:') %>
+    <%= select('review_sort[date]', 'direction', %w[asc desc])  %>
+    <%= submit_tag("Sort") %>
+  </div>
+<% end %>
