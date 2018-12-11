@@ -50,7 +50,7 @@ RSpec.describe User, type: :model do
       end
 
       it 'should sort reviews by rating ascending (date descending)' do
-        sort_params = {rating: "asc", date: "desc"}
+        sort_params = {rating: "asc"}
         sorted = @user.sort_reviews(sort_params)
 
         expect(sorted).to eq(@user.reviews.order("rating asc, reviews.created_at desc"))

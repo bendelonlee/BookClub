@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   def show
-    require 'pry'; binding.pry
     @user = User.find(params[:id])
     @user_id = params[:id]
     @reviews = @user.sort_reviews(params['review_sort']) if params[:review_sort]

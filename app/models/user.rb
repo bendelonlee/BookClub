@@ -17,6 +17,11 @@ class User < ApplicationRecord
   end
 
   def sort_reviews(sort_params)
-    reviews.order("rating #{sort_params['rating']}, reviews.created_at #{sort_params['date']}")
+    if sort_params[:rating]
+      rating_dir = sort_params[:rating]
+      date_dir = rating_dir == 'asc' ? 'desc' : 'asc'
+      reviews.order("rating #{rating_dir}, reviews.created_at #{date_dir}")
+    elsif sort_params[:date]
+    end
   end
 end
