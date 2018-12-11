@@ -5,23 +5,11 @@ class Author < ApplicationRecord
   has_many :book_authors, dependent: :destroy
   has_many :books, through: :book_authors
 
-  def self.top_authors(limit)
-    top_authors = Author.all.sort_by{|a| -a.all_books_review_average}[0..(limit - 1)]
-
+  def self.top_authors(number = nil)
+    Author.joins(books: [:reviews]).group(:author_id).order("AVG(reviews.rating)").limit(number)
   end
 
   def titleize_name
     self.name = name.titleize if name
-  end
-
-  def all_books_review_average
-    return 0 if books.joins(:reviews).count == 0
-    books.reduce(0) do |sum, book|
-      sum += book.reviews.sum(:rating)
-    end/self.books.joins(:reviews).count
-  end
-
-  def no_reviews?
-    reviews.count == 0
   end
 end
