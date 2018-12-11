@@ -94,8 +94,9 @@ describe 'Books index page' do
       visit books_path
 
       books = [book_1, book_2, book_3, book_4, book_5, book_6]
-      top_three = books.sort_by {|book| book.reviews.average(:rating) }[0..2]
+    
       top_three = books.sort_by {|book| -book.reviews.average(:rating) }[0..2]
+      bottom_three = books.sort_by {|book| book.reviews.average(:rating) }[0..2]
 
       top_three_expected = "Book: #{top_three[0].title}, " +
                  "Average Rating: #{top_three[0].reviews.average(:rating).round(2)} " +
@@ -105,14 +106,13 @@ describe 'Books index page' do
                  "Average Rating: #{top_three[2].reviews.average(:rating).round(2)}"
       expect(page).to have_content(top_three_expected)
 
-      bottom_three_expected = "Book: #{top_three[0].title}, " +
-                 "Average Rating: #{top_three[0].reviews.average(:rating).round(2)} " +
-                 "Book: #{top_three[1].title}, " +
-                 "Average Rating: #{top_three[1].reviews.average(:rating).round(2)} " +
-                 "Book: #{top_three[2].title}, " +
-                 "Average Rating: #{top_three[2].reviews.average(:rating).round(2)}"
+      bottom_three_expected = "Book: #{bottom_three[0].title}, " +
+                 "Average Rating: #{bottom_three[0].reviews.average(:rating).round(2)} " +
+                 "Book: #{bottom_three[1].title}, " +
+                 "Average Rating: #{bottom_three[1].reviews.average(:rating).round(2)} " +
+                 "Book: #{bottom_three[2].title}, " +
+                 "Average Rating: #{bottom_three[2].reviews.average(:rating).round(2)}"
       expect(page).to have_content(bottom_three_expected)
-
     end
 
     it 'should show statistics about the three users with most reviews' do
