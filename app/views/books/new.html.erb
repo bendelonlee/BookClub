@@ -1,21 +1,28 @@
 <h1>Add a book to our database</h1>
 
-<ul>
-<% @book.errors.full_messages.each do |error| %>
-
-  <li><%= error %></li>
-<% end %>
-</ul>
 
 <%= form_for(@book) do |f| %>
-  <%= f.label :authors %>
-  <%= f.text_field :authors, value: ""%>
+  <div class= "error-message">
+    <ul>
+    <% @book.errors.full_messages.each do |error| %>
 
-  <%= f.label :book_title%>
-  <%= f.text_field :title%>
-
-  <%= f.label :page_count%>
-  <%= f.text_field :page_count%>
-
-  <%= f.submit %>
+      <li><%= error %></li>
+    <% end %>
+    </ul>
+  </div>
+  <p class = "text-label">
+    <%= f.label :authors %>:<br/>
+    <%= f.text_field :authors, value: ""%>
+  </p>
+  <p class = "text-label">
+    <%= f.label :book_title%>:<br/>
+    <%= f.text_field :title%>
+  </p>
+  <p class = "text-label">
+    <%= f.label :page_count%>:<br/>
+    <%= f.text_field :page_count%>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
 <% end %>

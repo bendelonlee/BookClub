@@ -2,29 +2,32 @@
 <h1><%= @book.title %></h1>
 
 <%= form_for([@book, @review]) do |f| %>
-  <ul>
-  <% @review.errors.full_messages.each do |error| %>
-    <li><%= error %></li>
-  <% end %>
-  </ul>
-  <p>
-    <%= f.label :title %><br>
+  <div class= "error-message">
+    <ul>
+    <% @review.errors.full_messages.each do |error| %>
+      <li><%= error %></li>
+    <% end %>
+    </ul>
+  </div>
+  <p class = "text-label">
+    <%= f.label :title %>:<br>
     <%= f.text_field :title %>
   </p>
-  <p>
-    <%= f.label :user %><br>
+  <p class = "text-label">
+    <%= f.label :user %>:<br>
     <%= f.text_field :user %>
   </p>
-  <p>
-    <%= f.label :rating %><br>
+  <p class = "text-label">
+    <%= f.label :rating %>:<br>
     <%= radio_button('review', 'rating', '1' ) %>
     <%= radio_button('review', 'rating', '2' ) %>
     <%= radio_button('review', 'rating', '3' ) %>
     <%= radio_button('review', 'rating', '4' ) %>
     <%= radio_button('review', 'rating', '5' ) %>
+    <p class= "rating-numbers">1 2 3 4 5</p>
   </p>
-  <p>
-    <%= f.label :text %><br>
+  <p class = "text-label">
+    <%= f.label :text %> <span>:</span> <br>
     <%= f.text_field :text %>
   </p>
 

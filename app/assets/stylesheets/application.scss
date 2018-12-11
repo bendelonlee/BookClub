@@ -166,3 +166,27 @@ ol {
 .info-container.stats-info {
     padding-left: 30px;
 }
+
+.error-message {
+  height: 15px;
+  position: absolute;
+  top: 200px;
+
+  color: red;
+  li {
+    display: inline;
+
+  }
+}
+
+
+.rating-numbers {
+  font-size: 10px;
+  letter-spacing: 8px;
+  margin-left: 4px;
+  margin-bottom: 10px;
+}
+
+p.text-label {
+    margin-bottom: 10px;
+}
