@@ -63,14 +63,13 @@ RSpec.describe Book, type: :model do
       end
       it 'returns bottom three ascending' do
         expected = [@review_3,@review_4,@review_2]
-        
+
         expect(@book_1.get_reviews(:bottom, 3)).to eq(expected)
       end
     end
  end
 
  describe 'class methods' do
-
    describe '.rated_books' do
      before(:each) do
        @book_1 = Book.create!(title: "Harry Potter 1", page_count: 300, publish_year: 2007 )
@@ -95,19 +94,13 @@ RSpec.describe Book, type: :model do
        @review_7 = Review.create!(book: @book_1, user: @user_2, rating: 4, title: "It was a book",  text: "It's really hard to describe, you know?" )
      end
      it 'returns top three descending' do
-       expected = [
-         [@sorted_books_desc[0].title, 5],
-         [@sorted_books_desc[1].title, 4.5],
-         [@sorted_books_desc[2].title, 4]
-      ]
+       expected = [@sorted_books_desc[0],@sorted_books_desc[1],@sorted_books_desc[2]]
+
        expect(Book.rated_books(:top, 3)).to eq(expected)
      end
      it 'returns bottom three ascending' do
-       expected = [
-         [@sorted_books_desc[5].title, 1],
-         [@sorted_books_desc[4].title, 2],
-         [@sorted_books_desc[3].title, 3]
-      ]
+       expected = [@sorted_books_desc[5],@sorted_books_desc[4],@sorted_books_desc[3]]
+       
        expect(Book.rated_books(:bottom, 3)).to eq(expected)
      end
    end
