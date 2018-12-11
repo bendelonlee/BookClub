@@ -6,7 +6,7 @@ class Author < ApplicationRecord
   has_many :books, through: :book_authors
 
   def self.top_authors(number = nil)
-    Author.joins(books: [:reviews]).group(:author_id).order("AVG(reviews.rating)").limit(number)
+    Author.joins(books: [:reviews]).group("authors.id").order("AVG(reviews.rating)").limit(number)
   end
 
   def titleize_name
