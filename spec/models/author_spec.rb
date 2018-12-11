@@ -44,7 +44,7 @@ RSpec.describe Author, type: :model do
           book_8.reviews.create!(title: "#{Faker::App.name} #{Faker::Ancient.god}", rating: rand(1..5), user_id: user.id, text: Faker::RickAndMorty.quote)
           book_8.reviews.create!(title: "#{Faker::App.name} #{Faker::Ancient.god}", rating: rand(1..5), user_id: user.id, text: Faker::RickAndMorty.quote)
 
-      top_authors = Author.joins(books: [:reviews]).group(:author_id).order("AVG(reviews.rating)").limit(3)
+      top_authors = Author.joins(books: [:reviews]).group("authors.id").order("AVG(reviews.rating)").limit(3)
 
       expect(Author.top_authors(3)).to eq(top_authors)
     end
