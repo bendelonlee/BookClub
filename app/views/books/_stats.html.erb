@@ -5,7 +5,11 @@
       <h4>Top Books</h4>
       <ol>
       <% @top_three.each do |b| %>
+<<<<<<< HEAD
         <li>Book: <%= link_to(b.title, book_path(b), id: "book-title-#{b.id}") %>, Average Rating: <%= b.reviews.average(:rating).round(2) %></li>
+=======
+        <li>Book: <%= b[0] %>, Average Rating: <%= b[1].round(2) %></li>
+>>>>>>> 5b99753026167f8378193b8c537a29003f502750
       <% end %>
       </ol>
     </div>
@@ -13,7 +17,11 @@
       <h4>Bottom Books</h4>
       <ol>
       <% @bottom_three.each do |b| %>
+<<<<<<< HEAD
         <li>Book: <%= link_to(b.title, book_path(b), id: "book-title-#{b.id}") %>, Average Rating: <%= b.reviews.average(:rating).round(2) %></li>
+=======
+        <li>Book: <%= b[0] %>, Average Rating: <%= b[1].round(2) %></li>
+>>>>>>> 5b99753026167f8378193b8c537a29003f502750
       <% end %>
       </ol>
     </div>
