@@ -17,10 +17,12 @@
           <% end %>
         </p>
         <% average_rating = b.reviews.average(:rating) %>
-        <p>
-          <span class="data-label"> Average Rating: </span>
-          <span class="datum"><%= average_rating.round(2) if average_rating %></span>
-        </p>
+        <% if average_rating %>
+          <% stars = "\u2605" * average_rating.to_i %>
+          <p>
+            <span class="data-label"> Average Rating: <%= stars %> (<%= average_rating.round(2) %>) </span>
+          </p>
+        <% end %>
         <p>
           <span class="data-label"> Total Reviews: </span>
           <span class="datum"><%= b.reviews.count %></span>

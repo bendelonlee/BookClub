@@ -45,19 +45,29 @@ describe 'Books index page' do
       review_8 = @book_3.reviews.create!(title: "Wow, magnificient.", rating: 4, user_id: user_1.id, text: "This book took too long to read! It was bad!")
       review_9 = @book_3.reviews.create!(title: "Boo, fake news.", rating: 1, user_id: user_1.id, text: "This book flew by! It was amazing!")
 
-      book_1_average = ([review_1,review_2].reduce(0){|sum, rev| sum += rev.rating}) / 2
-      book_2_average = ([review_3,review_4,review_5].reduce(0){|sum, rev| sum += rev.rating}) / 3
-      book_3_average = ([review_6,review_7,review_8,review_9].reduce(0){|sum, rev| sum += rev.rating}) / 4
+      book_1_average = ([review_1,review_2].reduce(0){|sum, rev| sum += rev.rating}) / 2.0
+      book_2_average = ([review_3,review_4,review_5].reduce(0){|sum, rev| sum += rev.rating}) / 3.0
+      book_3_average = ([review_6,review_7,review_8,review_9].reduce(0){|sum, rev| sum += rev.rating}) / 4.0
 
       visit books_path
 
-      expect(page).to have_content("Average Rating: #{book_1_average}")
-      expect(page).to have_content("Average Rating: #{book_2_average}")
-      expect(page).to have_content("Average Rating: #{book_3_average}")
+      within "#book-#{@book_1.id}" do
+        stars = "\u2605" * book_1_average.to_i
+        expect(page).to have_content("Average Rating: #{stars} (#{book_1_average.round(2)})")
+        expect(page).to have_content("Total Reviews: #{@book_1.reviews.count}")
+      end
 
-      expect(page).to have_content("Total Reviews: #{@book_1.reviews.count}")
-      expect(page).to have_content("Total Reviews: #{@book_2.reviews.count}")
-      expect(page).to have_content("Total Reviews: #{@book_3.reviews.count}")
+      within "#book-#{@book_2.id}" do
+        stars = "\u2605" * book_2_average.to_i
+        expect(page).to have_content("Average Rating: #{stars} (#{book_2_average.round(2)})")
+        expect(page).to have_content("Total Reviews: #{@book_2.reviews.count}")
+      end
+
+      within "#book-#{@book_3.id}" do
+        stars = "\u2605" * book_3_average.to_i
+        expect(page).to have_content("Average Rating: #{stars} (#{book_3_average.round(2)})")
+        expect(page).to have_content("Total Reviews: #{@book_3.reviews.count}")
+      end
     end
 
     it 'should show statistics about the three top and lowest rated books' do
