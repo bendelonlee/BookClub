@@ -97,8 +97,6 @@ ol {
 .link_to {
   background-color: none; }
 
-
-
 .flex-container {
   display: flex;
   flex-wrap: wrap;
@@ -136,6 +134,14 @@ ol {
 .info-container.stats-info {
   padding-left: 30px; }
 
+.error-message {
+  height: 15px;
+  position: absolute;
+  top: 200px;
+  color: red; }
+  .error-message li {
+    display: inline; }
+
 .rating-numbers {
   font-size: 10px;
   letter-spacing: 8px;
@@ -143,7 +149,6 @@ ol {
   margin-bottom: 10px; }
 
 p.text-label {
-    margin-bottom: 10px;
-}
+  margin-bottom: 10px; }
 
 /*# sourceMappingURL=application.css.map */

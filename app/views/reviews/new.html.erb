@@ -2,11 +2,13 @@
 <h1><%= @book.title %></h1>
 
 <%= form_for([@book, @review]) do |f| %>
-  <ul>
-  <% @review.errors.full_messages.each do |error| %>
-    <li><%= error %></li>
-  <% end %>
-  </ul>
+  <div class= "error-message">
+    <ul>
+    <% @review.errors.full_messages.each do |error| %>
+      <li><%= error %></li>
+    <% end %>
+    </ul>
+  </div>
   <p class = "text-label">
     <%= f.label :title %>:<br>
     <%= f.text_field :title %>
@@ -25,7 +27,7 @@
     <p class= "rating-numbers">1 2 3 4 5</p>
   </p>
   <p class = "text-label">
-    <%= f.label :text %><br>
+    <%= f.label :text %> <span>:</span> <br>
     <%= f.text_field :text %>
   </p>
 
