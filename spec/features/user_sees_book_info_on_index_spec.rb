@@ -94,7 +94,7 @@ describe 'Books index page' do
       visit books_path
 
       books = [book_1, book_2, book_3, book_4, book_5, book_6]
-    
+
       top_three = books.sort_by {|book| -book.reviews.average(:rating) }[0..2]
       bottom_three = books.sort_by {|book| book.reviews.average(:rating) }[0..2]
 
@@ -141,9 +141,9 @@ describe 'Books index page' do
 
       visit books_path
 
-      top_users_expected = "User: #{user_3.name}, Total Reviews: #{user_3.reviews.size} " +
-                           "User: #{user_2.name}, Total Reviews: #{user_2.reviews.size} " +
-                           "User: #{user_4.name}, Total Reviews: #{user_4.reviews.size}"
+      top_users_expected = "User: #{user_3.name}, Total Reviews: #{user_3.reviews.count} " +
+                           "User: #{user_2.name}, Total Reviews: #{user_2.reviews.count} " +
+                           "User: #{user_4.name}, Total Reviews: #{user_4.reviews.count}"
 
       expect(page).to have_content(top_users_expected)
     end
