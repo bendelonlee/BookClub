@@ -42,9 +42,9 @@ describe 'Top Authors on Book Index page' do
     top_authors = Author.top_authors(3)
 
     within '.top_authors' do
-      expect(page).to have_content("Author: #{top_authors[0].name}, Average Rating: #{top_authors[0].all_books_review_average}")
-      expect(page).to have_content("Author: #{top_authors[1].name}, Average Rating: #{top_authors[1].all_books_review_average}")
-      expect(page).to have_content("Author: #{top_authors[2].name}, Average Rating: #{top_authors[2].all_books_review_average}")
+      expect(page).to have_content("Author: #{top_authors[0].name}, Average Rating: #{top_authors[0].books.joins(:reviews).average(:rating)}")
+      expect(page).to have_content("Author: #{top_authors[1].name}, Average Rating: #{top_authors[1].books.joins(:reviews).average(:rating)}")
+      expect(page).to have_content("Author: #{top_authors[2].name}, Average Rating: #{top_authors[2].books.joins(:reviews).average(:rating)}")
     end
   end
 end
