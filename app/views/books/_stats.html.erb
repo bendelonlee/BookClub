@@ -5,7 +5,7 @@
       <h4>Top Books</h4>
       <ol>
       <% @top_three.each do |b| %>
-        <li>Book: <%= b[0] %>, Average Rating: <%= b[1] %></li>
+        <li>Book: <%= link_to(b.title, book_path(b), id: "book-title-#{b.id}") %>, Average Rating: <%= b.reviews.average(:rating).round(2) %></li>
       <% end %>
       </ol>
     </div>
@@ -13,7 +13,7 @@
       <h4>Bottom Books</h4>
       <ol>
       <% @bottom_three.each do |b| %>
-        <li>Book: <%= b[0] %>, Average Rating: <%= b[1] %></li>
+        <li>Book: <%= link_to(b.title, book_path(b), id: "book-title-#{b.id}") %>, Average Rating: <%= b.reviews.average(:rating).round(2) %></li>
       <% end %>
       </ol>
     </div>
@@ -21,7 +21,7 @@
       <h4>Our Top Reviewers</h4>
       <ol>
       <% @top_users.each do |u| %>
-        <li>User: <%= link_to(u[1], user_path(u[0]), id: "user-name-#{u[0]}") %>, Total Reviews: <%= u[2] %></li>
+        <li>User: <%= link_to(u.name, user_path(u), id: "user-name-#{u.id}") %>, Total Reviews: <%= u[2] %></li>
       <% end %>
       </ol>
     </div>
@@ -29,7 +29,7 @@
       <h4>Our Top Authors</h4>
       <ol>
         <% @top_authors.each do |a| %>
-          <li>Author: <%= link_to()</li>
+          <li>Author: <%= link_to(a.name, author_path(a), id: "author-#{a.id}") %>, Average Rating: <%= a.books.joins(:reviews).average(:rating) %></li>
         <% end %>
       </ol>
     </div>
