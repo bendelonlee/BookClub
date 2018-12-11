@@ -22,7 +22,7 @@ class Book < ApplicationRecord
 
   def self.ordered_by_rating(asc_or_desc)
     joins(:reviews)
-      .group("books.id", "books.title")
+      .group("books.id")
       .order("AVG(reviews.rating) #{asc_or_desc}")
   end
 
