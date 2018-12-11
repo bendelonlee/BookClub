@@ -44,7 +44,7 @@ RSpec.describe Author, type: :model do
           book_8.reviews.create!(title: "#{Faker::App.name} #{Faker::Ancient.god}", rating: rand(1..5), user_id: user.id, text: Faker::RickAndMorty.quote)
           book_8.reviews.create!(title: "#{Faker::App.name} #{Faker::Ancient.god}", rating: rand(1..5), user_id: user.id, text: Faker::RickAndMorty.quote)
 
-      top_authors = Author.all.sort_by{|a| -a.all_books_review_average}[0..2]
+      top_authors = Author.joins(books: [:reviews]).group(:author_id).order("AVG(reviews.rating)").limit(3)
 
       expect(Author.top_authors(3)).to eq(top_authors)
     end
@@ -54,24 +54,6 @@ RSpec.describe Author, type: :model do
       author_1 = Author.new(name: "arthur")
       author_1.titleize_name
       expect(author_1.name).to eq("Arthur")
-    end
-    it '.all_books_review_average' do
-      user = User.create!(name: Faker::Name.unique.name)
-      author = Author.create!(name: Faker::Name.unique.name)
-        book_1 = author.books.create!(title: Faker::Book.unique.title, page_count: rand(900), publish_year: rand(1975..2018))
-          book_1.reviews.create!(title: "#{Faker::App.name} #{Faker::Ancient.god}", rating: rand(1..5), user_id: user.id, text: Faker::RickAndMorty.quote)
-          book_1.reviews.create!(title: "#{Faker::App.name} #{Faker::Ancient.god}", rating: rand(1..5), user_id: user.id, text: Faker::RickAndMorty.quote)
-          book_1.reviews.create!(title: "#{Faker::App.name} #{Faker::Ancient.god}", rating: rand(1..5), user_id: user.id, text: Faker::RickAndMorty.quote)
-          book_1.reviews.create!(title: "#{Faker::App.name} #{Faker::Ancient.god}", rating: rand(1..5), user_id: user.id, text: Faker::RickAndMorty.quote)
-        book_2 = author.books.create!(title: Faker::Book.unique.title, page_count: rand(900), publish_year: rand(1975..2018))
-          book_2.reviews.create!(title: "#{Faker::App.name} #{Faker::Ancient.god}", rating: rand(1..5), user_id: user.id, text: Faker::RickAndMorty.quote)
-          book_2.reviews.create!(title: "#{Faker::App.name} #{Faker::Ancient.god}", rating: rand(1..5), user_id: user.id, text: Faker::RickAndMorty.quote)
-
-      author_average = author.books.reduce(0) do |sum, book|
-        sum += book.reviews.sum(:rating)
-      end/author.books.joins(:reviews).count
-
-      expect(author.all_books_review_average).to eq(author_average)
     end
   end
 end
