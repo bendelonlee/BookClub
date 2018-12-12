@@ -23,7 +23,7 @@
 <% unless @top_reviews.empty? && @bottom_reviews.empty? %>
 <section class='review-stats'>
    <h2>Review Statistics</h2>
-   <h6>Average Rating: <%= @average_review %></h6>
+   <h6 id='total-average-rating'>Average Rating: <%= @average_review %></h6>
     <div class="flex-container">
       <div class="info-container">
         <div class="top-reviews">
