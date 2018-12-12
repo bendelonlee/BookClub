@@ -67,4 +67,5 @@ describe 'user sees the show page of one book' do
 
     expect(page).to have_content("Average Rating: #{book_1.reviews.average(:rating)}")
   end
+  
 end

@@ -23,24 +23,33 @@
 <% unless @top_reviews.empty? && @bottom_reviews.empty? %>
 <section class='review-stats'>
    <h2>Review Statistics</h2>
-    <div class="info-container">
-      <p>Average Rating: <%= @average_review %></p>
-      <div class="top-reviews">
-        <% @top_reviews.each do |r| %>
-          <p>User: <%= r[2] %></p>
-          <p>Title: <%= r[0] %></p>
-          <p>Rating: <%= r[1] %></p>
+   <h6>Average Rating: <%= @average_review %></h6>
+    <div class="flex-container">
+      <div class="info-container">
+        <div class="top-reviews">
+          <p></p>
+          <h6>Top Reviews</h6>
+          <% @top_reviews.each do |r| %>
+            <p>User: <%= r.user.name %></p>
+            <p>Title: <%= r.title %></p>
+            <p>Rating: <%= r.rating %></p>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="info-container">
+        <% unless @bottom_reviews.empty? %>
+          <div class="bottom-reviews">
+            <p></p>
+            <h6>Bottom Reviews:</h6>
+            <% @bottom_reviews.each do |r| %>
+              <p>User: <%= r.user.name %></p>
+              <p>Title: <%= r.title %></p>
+              <p>Rating: <%= r.rating %></p>
+            <% end %>
+          </div>
         <% end %>
       </div>
-    <% unless @bottom_reviews.empty? %>
-      <div class="bottom-reviews">
-        <% @bottom_reviews.each do |r| %>
-          <p>User: <%= r[2] %></p>
-          <p>Title: <%= r[0] %></p>
-          <p>Rating: <%= r[1] %></p>
-        <% end %>
-      </div>
-    <% end %>
   </div>
 </section>
 <% end %>
