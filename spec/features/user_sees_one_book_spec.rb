@@ -52,20 +52,36 @@ describe 'user sees the show page of one book' do
     bottom_three = book_1.reviews.order(:rating).limit(3).pluck(:title, :rating, :user_id)
     top_usernames = User.where("id IN (?)", top_three.map{|rev| rev.last}).pluck(:name)
     bottom_usernames = User.where("id IN (?)", bottom_three.map{|rev| rev.last}).pluck(:name)
+    within ".top-reviews" do
+      expect(page).to have_content("User: #{top_usernames[0]}")
+      expect(page).to have_content("Title: #{top_three[0][0]}")
+      expect(page).to have_content("Rating: #{top_three[0][1]}")
 
-    expect(page).to have_content("User: #{top_usernames[0]}")
-    expect(page).to have_content("Title: #{top_three[0][0]}")
-    expect(page).to have_content("Rating: #{top_three[0][1]}")
+      expect(page).to have_content("User: #{top_usernames[1]}")
+      expect(page).to have_content("Title: #{top_three[1][0]}")
+      expect(page).to have_content("Rating: #{top_three[1][1]}")
 
-    expect(page).to have_content("User: #{top_usernames[1]}")
-    expect(page).to have_content("Title: #{top_three[1][0]}")
-    expect(page).to have_content("Rating: #{top_three[1][1]}")
+      expect(page).to have_content("User: #{top_usernames[2]}")
+      expect(page).to have_content("Title: #{top_three[2][0]}")
+      expect(page).to have_content("Rating: #{top_three[2][1]}")
+    end
+    within ".bottom-reviews" do
+      expect(page).to have_content("User: #{bottom_usernames[0]}")
+      expect(page).to have_content("Title: #{bottom_three[0][0]}")
+      expect(page).to have_content("Rating: #{bottom_three[0][1]}")
 
-    expect(page).to have_content("User: #{top_usernames[2]}")
-    expect(page).to have_content("Title: #{top_three[2][0]}")
-    expect(page).to have_content("Rating: #{top_three[2][1]}")
+      expect(page).to have_content("User: #{bottom_usernames[1]}")
+      expect(page).to have_content("Title: #{bottom_three[1][0]}")
+      expect(page).to have_content("Rating: #{bottom_three[1][1]}")
 
-    expect(page).to have_content("Average Rating: #{book_1.reviews.average(:rating)}")
+      expect(page).to have_content("User: #{bottom_usernames[2]}")
+      expect(page).to have_content("Title: #{bottom_three[2][0]}")
+      expect(page).to have_content("Rating: #{bottom_three[2][1]}")
+    end
+    within '#total-average-rating' do
+      expect(page).to have_content("Average Rating: #{book_1.reviews.average(:rating)}")
+    end
+    
   end
-  
+
 end
